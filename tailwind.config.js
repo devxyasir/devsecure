@@ -28,6 +28,12 @@ export default {
         'slide-up': 'slide-up 0.7s ease-out forwards',
         'quantum-bounce': 'quantum-bounce 2s cubic-bezier(0.28, 0.84, 0.42, 1) infinite',
         'dimensional-shift': 'dimensional-shift 8s infinite',
+        // Performance optimized animations
+        'animate-gpu': 'none',  // Uses hardware acceleration
+        'fade-in-optimized': 'fade-in 0.5s ease-out forwards',
+        'pulse-optimized': 'pulse 3s ease-in-out infinite',
+        'spin-optimized': 'spin 10s linear infinite',
+        'float-optimized': 'float 4s ease-in-out infinite',
       },
       keyframes: {
         float: {
@@ -161,6 +167,9 @@ export default {
         'neon-pink': '0 0 5px #ff00aa, 0 0 10px #ff00aa, 0 0 15px #ff00aa, 0 0 20px #ff00aa',
         'neon-white': '0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #ffffff, 0 0 20px #ffffff',
         'hologram': '0 0 15px rgba(0, 179, 255, 0.5), 0 0 30px rgba(0, 179, 255, 0.3)',
+        // Performance optimized shadows
+        'glow-optimized': '0 0 5px rgba(0, 200, 255, 0.2)',
+        'neon-optimized': '0 0 3px #00b3ff',
       },
       transitionDuration: {
         '2000': '2000ms',
@@ -179,5 +188,22 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // Plugin to enable hardware acceleration for animations
+    function({ addUtilities }) {
+      const newUtilities = {
+        '.hardware-accelerated': {
+          transform: 'translateZ(0)',
+          backfaceVisibility: 'hidden',
+          perspective: '1000px'
+        },
+        '.optimize-legibility': {
+          textRendering: 'optimizeLegibility',
+          WebkitFontSmoothing: 'antialiased',
+          MozOsxFontSmoothing: 'grayscale',
+        }
+      }
+      addUtilities(newUtilities)
+    }
+  ],
 };

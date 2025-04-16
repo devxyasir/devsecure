@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Check, ChevronRight, X, Shield, Zap, Code, Laptop, Clock, Smartphone } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import SEOHead from '../shared/SEOHead';
@@ -23,6 +23,7 @@ interface Plan {
   category: PlanCategory;
   featured?: boolean;
   deliveryTime?: string;
+  discountPercent?: number;
 }
 
 // Currency conversion rate - 300 PKR = 1 USD
@@ -37,7 +38,20 @@ const Plans = () => {
   const [activeCategory, setActiveCategory] = useState<PlanCategory>('custom');
   const [showPromotion, setShowPromotion] = useState(true);
   const [currency, setCurrency] = useState<'pkr' | 'usd'>('pkr');
+  const [discountEnds, setDiscountEnds] = useState<string>('');
   const navigate = useNavigate();
+  
+  // Set a countdown for the discount offer (7 days from now)
+  useEffect(() => {
+    const endDate = new Date();
+    endDate.setDate(endDate.getDate() + 7);
+    const formattedDate = endDate.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric'
+    });
+    setDiscountEnds(formattedDate);
+  }, []);
   
   // Helper function to convert PKR string to USD string
   const pkrToUsd = (pkrString: string): string => {
@@ -57,6 +71,7 @@ const Plans = () => {
     {
       id: 'custom-basic',
       title: 'BASIC CODED PLAN',
+      discountPercent: 10,
       price: {
         pkr: 'PKR 115,500',
         usd: 'USD 385.00',
@@ -82,6 +97,7 @@ const Plans = () => {
     {
       id: 'custom-premium',
       title: 'PREMIUM CODED PLAN',
+      discountPercent: 15,
       price: {
         pkr: 'PKR 230,700',
         usd: 'USD 769.00',
@@ -110,6 +126,7 @@ const Plans = () => {
     {
       id: 'custom-advanced',
       title: 'ADVANCED CODED PLAN',
+      discountPercent: 20,
       price: {
         pkr: 'PKR 419,700+',
         usd: 'USD 1,399.00+',
@@ -140,6 +157,7 @@ const Plans = () => {
     {
       id: 'wordpress-basic',
       title: 'BASIC WORDPRESS PLAN',
+      discountPercent: 10,
       price: {
         pkr: 'PKR 62,700',
         usd: 'USD 209.00',
@@ -165,6 +183,7 @@ const Plans = () => {
     {
       id: 'wordpress-premium',
       title: 'PREMIUM WORDPRESS PLAN',
+      discountPercent: 15,
       price: {
         pkr: 'PKR 146,700',
         usd: 'USD 489.00',
@@ -192,6 +211,7 @@ const Plans = () => {
     {
       id: 'wordpress-advanced',
       title: 'ADVANCED WORDPRESS PLAN',
+      discountPercent: 20,
       price: {
         pkr: 'PKR 314,700+',
         usd: 'USD 1,049.00+',
@@ -221,6 +241,7 @@ const Plans = () => {
     {
       id: 'seo-basic',
       title: 'BASIC SEO PLAN',
+      discountPercent: 8,
       price: {
         pkr: 'PKR 41,700',
         usd: 'USD 139.00',
@@ -250,6 +271,7 @@ const Plans = () => {
     {
       id: 'seo-premium',
       title: 'PREMIUM SEO PLAN',
+      discountPercent: 12,
       price: {
         pkr: 'PKR 104,700',
         usd: 'USD 349.00',
@@ -279,6 +301,7 @@ const Plans = () => {
     {
       id: 'seo-advanced',
       title: 'ADVANCED SEO PLAN',
+      discountPercent: 18,
       price: {
         pkr: 'PKR 146,700',
         usd: 'USD 489.00',
@@ -310,6 +333,7 @@ const Plans = () => {
     {
       id: 'maintenance-basic',
       title: 'BASIC MAINTENANCE PLAN',
+      discountPercent: 8,
       price: {
         pkr: 'PKR 12,300',
         usd: 'USD 41.00',
@@ -329,6 +353,7 @@ const Plans = () => {
     {
       id: 'maintenance-premium',
       title: 'PREMIUM MAINTENANCE PLAN',
+      discountPercent: 12,
       price: {
         pkr: 'PKR 22,800',
         usd: 'USD 76.00',
@@ -349,6 +374,7 @@ const Plans = () => {
     {
       id: 'maintenance-advanced',
       title: 'ADVANCED MAINTENANCE PLAN',
+      discountPercent: 16,
       price: {
         pkr: 'PKR 41,700',
         usd: 'USD 139.00',
@@ -374,6 +400,7 @@ const Plans = () => {
     {
       id: 'app-basic',
       title: 'BASIC APP PLAN',
+      discountPercent: 10,
       price: {
         pkr: 'PKR 174,900',
         usd: 'USD 583.00',
@@ -399,6 +426,7 @@ const Plans = () => {
     {
       id: 'app-premium',
       title: 'PREMIUM APP PLAN',
+      discountPercent: 18,
       price: {
         pkr: 'PKR 335,900',
         usd: 'USD 1,119.67',
@@ -427,6 +455,7 @@ const Plans = () => {
     {
       id: 'app-advanced',
       title: 'ADVANCED APP PLAN',
+      discountPercent: 25,
       price: {
         pkr: 'PKR 629,900+',
         usd: 'USD 2,099.67+',
@@ -531,44 +560,7 @@ const Plans = () => {
         structuredData={structuredData}
         ogType="product"
       />
-      {/* Toggle Button for Promo Banner */}
-      <button 
-        onClick={() => setShowPromotion(!showPromotion)}
-        className="fixed top-4 right-4 z-50 w-10 h-10 rounded-full bg-gradient-to-r from-cyan-500 to-purple-500 flex items-center justify-center shadow-lg border border-cyan-400/30 hover:shadow-cyan-500/30 hover:scale-105 transition-all"
-        aria-label={showPromotion ? "Hide promotion" : "Show promotion"}
-      >
-        {showPromotion ? (
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
-            <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-          </svg>
-        ) : (
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
-            <path fillRule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zm7-10a1 1 0 01.707.293l.707.707L15.414 5a1 1 0 01-1.414 1.414L12.293 4.707l-.707-.707A1 1 0 0112 3zm2 5a1 1 0 011 1v1h1a1 1 0 110 2h-1v1a1 1 0 11-2 0v-1h-1a1 1 0 010-2h1V9a1 1 0 011-1z" clipRule="evenodd" />
-          </svg>
-        )}
-      </button>
       
-      {/* Side Promotion Banner */}
-      <div className={`fixed right-0 top-1/4 transform transition-transform duration-500 z-40 ${showPromotion ? 'translate-x-0' : 'translate-x-full'}`}>
-        <div className="w-72 bg-gradient-to-b from-indigo-900/95 via-purple-900/95 to-blue-900/95 p-4 shadow-xl border-l border-t border-b border-cyan-500/40 rounded-l-lg backdrop-blur-sm">
-          <div className="relative z-10">
-            <div className="w-14 h-14 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 flex items-center justify-center mx-auto mb-3 animate-pulse">
-              <span className="text-white font-bold text-lg">20%</span>
-            </div>
-            
-            <h3 className="text-white font-bold text-xl text-center mb-2">LIMITED TIME OFFER</h3>
-            <p className="text-cyan-300 text-center mb-4">Get an additional 20% OFF on your first successful deal!</p>
-            
-            <div className="flex justify-center mb-3">
-              <span className="text-white text-sm bg-cyan-600/50 py-1.5 px-4 rounded-full border border-cyan-400/30 shadow-inner shadow-cyan-500/20 block text-center">Use Code: QUANTUM20</span>
-            </div>
-            
-            <div className="absolute -z-10 top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full filter blur-xl"></div>
-            <div className="absolute -z-10 bottom-0 left-0 w-32 h-32 bg-purple-500/10 rounded-full filter blur-xl"></div>
-          </div>
-        </div>
-      </div>
-
       {/* Background effects */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gray-900 via-black to-gray-900"></div>
@@ -658,18 +650,18 @@ const Plans = () => {
             >
               {/* Featured badge */}
               {plan.featured && (
-                <div className="bg-gradient-to-r from-cyan-600 to-blue-600 text-white text-xs font-bold py-1 px-4 absolute top-4 right-0 rounded-l-full">
+                <div className="bg-gradient-to-r from-cyan-600 to-blue-600 text-white text-xs font-bold py-1 px-4 absolute top-4 right-0 rounded-l-full shadow-lg">
                   RECOMMENDED
                 </div>
               )}
               
-              {/* Discount tag */}
-              <div className="absolute -right-10 top-14 bg-gradient-to-r from-purple-600 via-cyan-500 to-blue-600 text-white font-bold py-1.5 px-12 text-xs shadow-[0_0_10px_rgba(59,130,246,0.5)] transform rotate-45 z-10 flex items-center justify-center overflow-hidden border-t border-b border-cyan-300/30">
+              {/* Discount tag - Now shown on all plans with dynamic percent */}
+              <div className="absolute -right-10 top-8 bg-gradient-to-r from-purple-600 via-cyan-500 to-blue-600 text-white font-bold py-1.5 px-12 text-xs shadow-[0_0_10px_rgba(59,130,246,0.6)] transform rotate-45 z-10 flex items-center justify-center overflow-hidden border-t border-b border-cyan-300/40">
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-cyan-500/20 animate-pulse"></div>
-                <div className="absolute -left-10 -top-10 w-16 h-16 bg-cyan-400/20 rounded-full blur-xl"></div>
-                <div className="absolute -right-10 -bottom-10 w-16 h-16 bg-purple-500/20 rounded-full blur-xl"></div>
-                <span className="relative z-20 tracking-wider">20% OFF</span>
-                <span className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent"></span>
+                <div className="absolute -left-10 -top-10 w-16 h-16 bg-cyan-400/30 rounded-full blur-xl animate-blob"></div>
+                <div className="absolute -right-10 -bottom-10 w-16 h-16 bg-purple-500/30 rounded-full blur-xl animate-blob animation-delay-2000"></div>
+                <span className="relative z-20 tracking-wider animate-pulse">{plan.discountPercent || 10}% OFF</span>
+                <span className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent"></span>
               </div>
               
               <div className="p-6">

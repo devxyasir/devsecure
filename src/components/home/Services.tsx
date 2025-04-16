@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { 
   Shield, 
   Database, 
@@ -21,6 +21,8 @@ import {
   Layers
 } from 'lucide-react';
 import SEOHead from '../shared/SEOHead';
+import { throttle } from '../../utils/optimizations';
+import { getAnimationSettings } from '../../utils/animationOptimizer';
 
 // Helper function to get colors based on service color name
 const getColorForService = (colorName: string, shade: string, opacity: number): string => {
@@ -332,8 +334,14 @@ const services: ServiceType[] = [
 
 const Services: React.FC = () => {
   const servicesRef = useRef<HTMLDivElement>(null);
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
+  const [visibleSections, setVisibleSections] = useState<number[]>([]);
+  const [hasScrolled, setHasScrolled] = useState(false);
+  
+  // Get animation settings based on device capabilities
+  const animationSettings = useMemo(() => getAnimationSettings(), []);
+  const shouldAnimate = animationSettings.useParallax;
   
   // Create structured data for services
   const structuredData = {
@@ -348,15 +356,17 @@ const Services: React.FC = () => {
         "description": service.description,
         "provider": {
           "@type": "Organization",
-          "name": "DevSecure Technology Solutions"
+          "name": "DevSecure",
+          "url": "https://devsecure.com/"
         },
         "serviceType": service.title
       }
     }))
   };
 
-  // Additional services shown in smaller boxes
-  const additionalServices = [
+  // Note: additionalServices are not currently used in the rendered component
+  // Keeping them for potential future use
+  const _unusedAdditionalServices = [
     {
       icon: TrendingUp,
       title: 'SEO & Marketing',
@@ -406,46 +416,52 @@ const Services: React.FC = () => {
       isCore: false
     },
   ];
-  
-  // Track mouse position for quantum field effects
+
+  // Track mouse position for quantum field effects - with throttling
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (servicesRef.current) {
-        const rect = servicesRef.current.getBoundingClientRect();
-        setCursorPosition({
+    if (!servicesRef.current || !shouldAnimate) return;
+    
+    const handleMouseMove = throttle((e: MouseEvent) => {
+      const rect = servicesRef.current?.getBoundingClientRect();
+      if (rect) {
+        setMousePosition({
           x: e.clientX - rect.left,
           y: e.clientY - rect.top
         });
       }
-    };
+    }, 50);
     
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
+  }, [servicesRef, shouldAnimate]);
+  
+  // Detect scroll position for animations - with throttling
   useEffect(() => {
-    const handleScroll = () => {
-      if (!servicesRef.current) return;
-      const elements = servicesRef.current.querySelectorAll('.service-card');
-
-      elements.forEach((el, i) => {
-        const rect = el.getBoundingClientRect();
-        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-
-        if (isVisible) {
-          el.classList.add('animate-slide-up');
-          el.setAttribute('style', `animation-delay: ${i * 0.05}s`);
-        }
-      });
-    };
-
-    handleScroll();
+    const handleScroll = throttle(() => {
+      setHasScrolled(true);
+      
+      if (servicesRef.current) {
+        const elements = servicesRef.current.querySelectorAll('.service-card');
+        const newVisibleSections: number[] = [];
+        
+        elements.forEach((section, index) => {
+          const rect = section.getBoundingClientRect();
+          if (rect.top < window.innerHeight * 0.8 && rect.bottom > 0) {
+            newVisibleSections.push(index);
+          }
+        });
+        
+        setVisibleSections(newVisibleSections);
+      }
+    }, 100);
+    
+    handleScroll(); // Check initial state
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <section id="services" ref={servicesRef} className="relative py-24 overflow-hidden bg-black">
+    <section id="services" ref={servicesRef} className="py-20 relative overflow-hidden hardware-accelerated">
       <SEOHead
         title="DevSecure Innovative Technology Services"  
         description="Explore DevSecure's comprehensive technology service offerings including web development, mobile apps, cybersecurity, AI integration, cloud solutions, and digital marketing. Our quantum-inspired approach ensures cutting-edge innovation for your business."
@@ -453,39 +469,42 @@ const Services: React.FC = () => {
         currentPage="/services"
         structuredData={structuredData}
       />
-      {/* Dimensional Quantum effects */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-cyber-grid bg-[size:40px_40px] opacity-30"></div>
+      {/* Quantum field background - static version for better performance */}
+      <div className="absolute inset-0 bg-black">
+        {/* Background gradients - simplified for performance */}
+        <div className="absolute inset-0 opacity-30 bg-gradient-to-b from-blue-900/20 via-transparent to-transparent" />
+        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_center,rgba(16,65,232,0.15),transparent_80%)]" />
+        <div className="absolute inset-0 opacity-5 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:14px_14px]" />
       </div>
 
-      {/* Quantum particles */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
-          <div 
-            key={i}
-            className="absolute w-1 h-1 bg-cyan-400/30 rounded-full animate-pulse-slow"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDuration: `${Math.random() * 5 + 3}s`,
-              animationDelay: `${Math.random() * 2}s`,
-            }}
-          />
-        ))}
-      </div>
-      
+      {/* Interactive quantum cursor effect - only render if device supports it */}
+      {shouldAnimate && (
+        <div 
+          className="absolute pointer-events-none opacity-10 mix-blend-screen hardware-accelerated" 
+          style={{
+            background: `radial-gradient(400px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(14,165,233,0.15), transparent 80%)`,
+            height: '200%',
+            width: '200%',
+            left: '-50%',
+            top: '-50%',
+            transform: 'translate(0%, 0%) translateZ(0)',
+            willChange: 'background',
+          }}
+        />
+      )}
+
       <div className="container mx-auto px-4">
-        <div className="mb-16 text-center">
-          <h2 className="section-title">Quantum Solutions Matrix</h2>
-          <p className="text-gray-300 max-w-3xl mx-auto text-lg">
+        <div className="mb-16 text-center hardware-accelerated">
+          <h2 className="section-title text-4xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500">Quantum Solutions Matrix</h2>
+          <p className="section-description text-xl text-gray-300 max-w-3xl mx-auto">
             Explore our comprehensive suite of advanced technological services designed to transform your digital ecosystem.
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => {
             const isHovered = hoverIndex === index;
-            
+
             return (
               <div 
                 key={index}
@@ -493,40 +512,38 @@ const Services: React.FC = () => {
                 onMouseEnter={() => hoverIndex === null && setHoverIndex(index)}
                 onMouseLeave={() => setHoverIndex(null)}
               >
-                <div className="relative p-6 h-full quantum-panel transform transition-all duration-500 hover:scale-[1.03] hover:shadow-neon">
-                  {/* Advanced geometric background elements */}
-                  <div className="absolute top-0 right-0 -mt-4 -mr-4 opacity-0 group-hover:opacity-60 transition-opacity duration-500 hidden lg:block">
+                <div className="relative p-6 h-full quantum-panel transform transition-all duration-300 hover:scale-[1.02] hover:shadow-glow-optimized hardware-accelerated">
+                  {/* Static decoration instead of animated geometry */}
+                  <div className="absolute top-0 right-0 -mt-4 -mr-4 opacity-0 group-hover:opacity-60 transition-opacity duration-300 hidden lg:block">
                     <Hexagon 
-                      className="animate-spin-slow"
                       style={{ 
-                        animationDuration: `${15 + index * 2}s`,
                         color: getColorForService(service.color, '500', 0.2)
                       }}
                       size={60} 
                     />
                   </div>
-                  
+
                   <div className="flex items-start">
                     {/* Quantum icon container */}
-                    <div className="relative mr-4">
-                      {/* Energy field around icon */}
-                      <div className={`absolute -inset-4 rounded-full blur-xl opacity-0 ${isHovered ? 'opacity-90' : ''} transition-all duration-500`}
+                    <div className="relative mr-4 hardware-accelerated">
+                      {/* Simplified energy field around icon */}
+                      <div className={`absolute -inset-4 rounded-full blur-sm opacity-0 ${isHovered ? 'opacity-70' : ''} transition-opacity duration-300`}
                         style={{
-                          background: `linear-gradient(to right, ${getColorForService(service.color, '500', 0)}, ${getColorForService(service.color, '500', 0.2)}, rgba(59, 130, 246, 0))`
+                          background: getColorForService(service.color, '500', 0.1)
                         }}
                       ></div>
-                      
-                      {/* Dimensional icon container */}
+
+                      {/* Optimized icon container */}
                       <div className="relative z-10 hologram-panel p-3 rounded-xl">
                         <service.icon 
-                          className={`h-8 w-8 ${isHovered ? 'animate-hologram-flicker' : ''} transition-all duration-300`}
+                          className={`h-8 w-8 transition-all duration-300 hardware-accelerated`}
                           style={{
                             color: getColorForService(service.color, '400', 1)
                           }}
                         />
                       </div>
                     </div>
-                    
+
                     {/* Service title and description */}
                     <div className="flex-1">
                       <h3 className="text-xl font-bold mb-2 text-white">
@@ -537,21 +554,25 @@ const Services: React.FC = () => {
                       </p>
                     </div>
                   </div>
-                  
+
                   {/* Skills showcase with hover effect */}
                   <div className="mt-6">
                     <div className="text-gray-400 text-xs mb-2 flex justify-between items-center">
                       <span>Core Competencies</span>
                       <span className="text-gray-500">{service.subSkills.length} skills</span>
                     </div>
-                    
+
                     <div className="flex flex-wrap gap-2">
                       {service.subSkills.slice(0, isHovered ? 12 : 6).map((skill, idx) => (
                         <div 
                           key={idx} 
-                          className="text-xs py-1.5 px-2 glass-panel rounded-md animate-slide-up flex items-center text-white"
+                          className="text-xs py-1.5 px-2 glass-panel rounded-md flex items-center text-white hardware-accelerated"
                           style={{ 
-                            animationDelay: `${idx * 0.05}s`
+                            opacity: 1,
+                            transform: 'translateZ(0)',
+                            transitionProperty: 'opacity, transform',
+                            transitionDuration: '300ms',
+                            transitionTimingFunction: 'ease-out'
                           }}
                         >
                           <div className="h-1 w-1 rounded-full mr-1.5 bg-white"></div>

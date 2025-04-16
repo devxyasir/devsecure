@@ -4,8 +4,60 @@
 
 [build.environment]
   NODE_VERSION = "18"
+  VITE_BUILD_MODE = "production"
 
+# Performance optimization: SPA routing support
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+# Cache control for static assets
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Cache for fonts
+[[headers]]
+  for = "/*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Cache for images
+[[headers]]
+  for = "/*.(?:jpg|jpeg|gif|png|svg|webp)"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Security headers for all pages
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    Content-Security-Policy = "upgrade-insecure-requests; block-all-mixed-content"
+
+# Performance optimization: Brotli compression is handled automatically by Netlify, 
+# but we can specify gzip compression for browsers that don't support Brotli
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
+
+[build.processing.images]
+  compress = true
+
+# Set environment variables securely in Netlify UI, not here

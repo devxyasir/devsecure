@@ -1,6 +1,8 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
+import { Shield, ArrowRight, ChevronDown, Hexagon, Atom, Sparkles, Zap,  Cpu, Code, Database, Server  } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-// Define animation keyframes for new cosmic effects
+// Using a simple animation function instead of gsap for better performances
 if (typeof document !== 'undefined') {
   const style = document.createElement('style');
   style.textContent = `
@@ -23,8 +25,6 @@ if (typeof document !== 'undefined') {
   `;
   document.head.appendChild(style);
 }
-import { Shield, ArrowRight, ChevronDown, Hexagon, Atom, Sparkles, Zap } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -40,7 +40,74 @@ const Hero = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
   
-
+  // High-performance animation effect
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      let rafId: number | null = null;
+      let lastMouseX = 0;
+      let lastMouseY = 0;
+      let lastUpdateTime = 0;
+      
+      // Optimized mouse move handler with debouncing and RAF
+      const handleMouseMove = (e: MouseEvent) => {
+        lastMouseX = e.clientX;
+        lastMouseY = e.clientY;
+        
+        // Limit updates to max 60fps for smooth performance
+        const now = performance.now();
+        if (now - lastUpdateTime < 16) { // ~60fps
+          return;
+        }
+        lastUpdateTime = now;
+        
+        if (!rafId) {
+          rafId = requestAnimationFrame(updateAnimations);
+        }
+      };
+      
+      const updateAnimations = () => {
+        rafId = null;
+        
+        const heroElement = heroRef.current;
+        if (!heroElement) return;
+        
+        const rect = heroElement.getBoundingClientRect();
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const x = lastMouseX - rect.left;
+        const y = lastMouseY - rect.top;
+        
+        // Only animate a limited number of elements to maintain performance
+        const decorativeElements = heroElement.querySelectorAll('.decorative-element');
+        decorativeElements.forEach((el, index) => {
+          // Only animate every other element for better performance
+          if (index % 2 === 0) {
+            const speed = 0.02;
+            const xPos = speed * (x - centerX);
+            const yPos = speed * (y - centerY);
+            
+            // Use hardware-accelerated transforms for better performance
+            (el as HTMLElement).style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
+          }
+        });
+      };
+      
+      const heroElement = heroRef.current;
+      if (heroElement) {
+        heroElement.addEventListener('mousemove', handleMouseMove);
+      }
+      
+      return () => {
+        if (heroElement) {
+          heroElement.removeEventListener('mousemove', handleMouseMove);
+        }
+        
+        if (rafId) {
+          cancelAnimationFrame(rafId);
+        }
+      };
+    }
+  }, []);
 
   // Parallax scroll effect
   useEffect(() => {
@@ -313,10 +380,10 @@ const Hero = () => {
               
               {/* Quantum core with orbiting elements */}
               <div className="relative z-10">
-                {/* Orbiting elements */}
-                <Hexagon className="absolute h-16 w-16 text-cyan-500/50 animate-spin-slower" style={{ animationDuration: '15s' }} />
-                <Hexagon className="absolute h-16 w-16 text-blue-500/40 animate-spin-reverse" style={{ animationDuration: '20s', transform: 'rotate(30deg)' }} />
-                <Hexagon className="absolute h-16 w-16 text-purple-500/30 animate-spin-slow" style={{ animationDuration: '25s', transform: 'rotate(60deg)' }} />
+                {/* Orbiting elements - with decorative-element class */}
+                <Hexagon className="absolute h-16 w-16 text-cyan-500/50 animate-spin-slower decorative-element parallax-item" data-speed="-0.15" style={{ animationDuration: '15s' }} />
+                <Hexagon className="absolute h-16 w-16 text-blue-500/40 animate-spin-reverse decorative-element parallax-item" data-speed="-0.2" style={{ animationDuration: '20s', transform: 'rotate(30deg)' }} />
+                <Hexagon className="absolute h-16 w-16 text-purple-500/30 animate-spin-slow decorative-element parallax-item" data-speed="-0.18" style={{ animationDuration: '25s', transform: 'rotate(60deg)' }} />
                 
                 {/* Core shield with holographic effects */}
                 <div className="relative backdrop-blur-sm rounded-full border border-cyan-500/50 p-3">
@@ -352,11 +419,11 @@ const Hero = () => {
             </h1>
           </div>
 
-          {/* Main headline container with enhanced spacing to prevent overlap */}
+          {/* Main headline container with enhanced spacing to prevent overlap - fixed positioning */}
           <div className="flex flex-col space-y-10 mb-16 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-            {/* Primary headline with dimensional effects - isolated container */}
+            {/* Primary headline with dimensional effects - isolated container and fixed position */}
             <div className="relative overflow-visible py-3">
-              <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight parallax-item leading-normal md:leading-normal" data-speed="-0.05">
+              <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-normal md:leading-normal">
                 <span className="relative z-10 inline-block p-1">
                   <span className="text-quantum" data-text="Empowering Innovation">
                     <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400 text-transparent bg-clip-text bg-[length:300%_auto] animate-gradient-xy">
@@ -369,42 +436,42 @@ const Hero = () => {
               </h2>
             </div>
             
-            {/* Secondary headline with quantum styling - with clear separation */}
+            {/* Secondary headline with quantum styling - with clear separation and fixed position */}
             <div className="relative animate-slide-up mt-8" style={{ animationDelay: '0.3s' }}>
-              <p className="text-2xl md:text-4xl lg:text-5xl font-bold text-white text-neon parallax-item leading-normal md:leading-normal" data-speed="-0.08">
+              <p className="text-2xl md:text-4xl lg:text-5xl font-bold text-white text-neon leading-normal md:leading-normal">
                 Securing the Future of Technology
               </p>
               <div className="absolute -bottom-4 w-32 h-px left-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-blue-500 to-transparent animate-pulse-slow mt-4"></div>
             </div>
           </div>
 
-          {/* Enhanced description with holographic keywords */}
-          <div className="mt-8 relative animate-slide-up overflow-hidden quantum-panel backdrop-blur-lg p-8" style={{ animationDelay: '0.4s' }}>
-            <div className="absolute inset-0 -z-10 animate-data-stream opacity-30"></div>
-            <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed parallax-item" data-speed="-0.12">
-              We specialize in 
-              <span className="text-quantum relative inline-block mx-1">
-                <Atom className="inline-block mr-1 -mt-1 animate-spin-slow text-cyan-400" size={18} />
+          {/* Simplified description with inline rotating emojis */}
+          <div className="mt-8 relative animate-slide-up overflow-hidden quantum-panel backdrop-blur-sm p-8" style={{ animationDelay: '0.4s' }}>
+            <div className="absolute inset-0 -z-10 opacity-10 bg-gradient-to-r from-blue-900/20 via-purple-900/20 to-cyan-900/20"></div>
+            <p className="text-base sm:text-lg text-gray-200 max-w-3xl mx-auto leading-relaxed text-center">
+              We specialize in
+              <span className="inline-flex items-center mx-1">
+                <Atom className="inline-block mr-1 text-cyan-400 animate-spin-slow" size={16} />
                 <span className="text-future">AI</span>
               </span>, 
-              <span className="text-quantum relative inline-block mx-1">
-                <Zap className="inline-block mr-1 -mt-1 text-blue-400" size={18} />
+              <span className="inline-flex items-center mx-1">
+                <Zap className="inline-block mr-1 text-blue-400 animate-spin-slow" style={{ animationDuration: '8s' }} size={16} />
                 <span className="text-future">Machine Learning</span>
               </span>, 
-              <span className="text-quantum relative inline-block mx-1">
-                <Shield className="inline-block mr-1 -mt-1 text-purple-400" size={18} />
+              <span className="inline-flex items-center mx-1">
+                <Shield className="inline-block mr-1 text-purple-400 animate-spin-slow" style={{ animationDuration: '10s' }} size={16} />
                 <span className="text-future">Cybersecurity</span>
               </span>, and 
-              <span className="text-quantum relative inline-block mx-1">
-                <Sparkles className="inline-block mr-1 -mt-1 text-indigo-400" size={18} />
+              <span className="inline-flex items-center mx-1">
+                <Sparkles className="inline-block mr-1 text-indigo-400 animate-spin-slow" style={{ animationDuration: '12s' }} size={16} />
                 <span className="text-future">Advanced Development</span>
               </span> 
               solutions that drive innovation and protect your digital assets.
             </p>
           </div>
 
-          {/* Quantum call-to-action buttons */}
-          <div className="mt-12 flex flex-col sm:flex-row justify-center gap-8 parallax-item animate-slide-up" data-speed="-0.15" style={{ animationDelay: '0.5s' }}>
+          {/* Quantum call-to-action buttons - fixed position for buttons */}
+          <div className="mt-12 flex flex-col sm:flex-row justify-center gap-8 animate-slide-up" style={{ animationDelay: '0.5s' }}>
             <Link
               to="/contact"
               className="group relative px-8 py-4 hologram-panel rounded-xl text-white font-medium overflow-hidden transition-all duration-500 hover:scale-[1.03] shadow-neon-cyan hover:shadow-neon-cyan transform hover:-translate-y-1"
