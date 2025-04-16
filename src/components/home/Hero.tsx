@@ -352,29 +352,29 @@ const Hero = () => {
             </h1>
           </div>
 
-          {/* Main headline container with proper spacing */}
-          <div className="flex flex-col space-y-6 mb-12 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-            {/* Primary headline with dimensional effects */}
-            <div className="relative overflow-hidden">
-              <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight parallax-item" data-speed="-0.05">
-                <span className="relative z-10 inline-block">
+          {/* Main headline container with enhanced spacing to prevent overlap */}
+          <div className="flex flex-col space-y-10 mb-16 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+            {/* Primary headline with dimensional effects - isolated container */}
+            <div className="relative overflow-visible py-3">
+              <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight parallax-item leading-normal md:leading-normal" data-speed="-0.05">
+                <span className="relative z-10 inline-block p-1">
                   <span className="text-quantum" data-text="Empowering Innovation">
                     <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400 text-transparent bg-clip-text bg-[length:300%_auto] animate-gradient-xy">
                       Empowering Innovation
                     </span>
                   </span>
-                  {/* Animated glow underline */}
+                  {/* Animated glow underline - positioned with more space */}
                   <span className="absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-cyan-400/0 via-cyan-400 to-purple-400/0 animate-shimmer"></span>
                 </span>
               </h2>
             </div>
             
-            {/* Secondary headline with quantum styling */}
-            <div className="relative animate-slide-up" style={{ animationDelay: '0.3s' }}>
-              <p className="text-2xl md:text-4xl lg:text-5xl font-bold text-white text-neon parallax-item" data-speed="-0.08">
+            {/* Secondary headline with quantum styling - with clear separation */}
+            <div className="relative animate-slide-up mt-8" style={{ animationDelay: '0.3s' }}>
+              <p className="text-2xl md:text-4xl lg:text-5xl font-bold text-white text-neon parallax-item leading-normal md:leading-normal" data-speed="-0.08">
                 Securing the Future of Technology
               </p>
-              <div className="absolute bottom-0 w-32 h-px left-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-blue-500 to-transparent animate-pulse-slow mt-4"></div>
+              <div className="absolute -bottom-4 w-32 h-px left-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-blue-500 to-transparent animate-pulse-slow mt-4"></div>
             </div>
           </div>
 
