@@ -30,102 +30,11 @@ const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   
-  // Handle cursor tracking for quantum field effect
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setCursorPosition({ x: e.clientX, y: e.clientY });
-    };
-    
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  // (Removed mouse tracking effect for static background)
   
-  // High-performance animation effect
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      let rafId: number | null = null;
-      let lastMouseX = 0;
-      let lastMouseY = 0;
-      let lastUpdateTime = 0;
-      
-      // Optimized mouse move handler with debouncing and RAF
-      const handleMouseMove = (e: MouseEvent) => {
-        lastMouseX = e.clientX;
-        lastMouseY = e.clientY;
-        
-        // Limit updates to max 60fps for smooth performance
-        const now = performance.now();
-        if (now - lastUpdateTime < 16) { // ~60fps
-          return;
-        }
-        lastUpdateTime = now;
-        
-        if (!rafId) {
-          rafId = requestAnimationFrame(updateAnimations);
-        }
-      };
-      
-      const updateAnimations = () => {
-        rafId = null;
-        
-        const heroElement = heroRef.current;
-        if (!heroElement) return;
-        
-        const rect = heroElement.getBoundingClientRect();
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const x = lastMouseX - rect.left;
-        const y = lastMouseY - rect.top;
-        
-        // Only animate a limited number of elements to maintain performance
-        const decorativeElements = heroElement.querySelectorAll('.decorative-element');
-        decorativeElements.forEach((el, index) => {
-          // Only animate every other element for better performance
-          if (index % 2 === 0) {
-            const speed = 0.02;
-            const xPos = speed * (x - centerX);
-            const yPos = speed * (y - centerY);
-            
-            // Use hardware-accelerated transforms for better performance
-            (el as HTMLElement).style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
-          }
-        });
-      };
-      
-      const heroElement = heroRef.current;
-      if (heroElement) {
-        heroElement.addEventListener('mousemove', handleMouseMove);
-      }
-      
-      return () => {
-        if (heroElement) {
-          heroElement.removeEventListener('mousemove', handleMouseMove);
-        }
-        
-        if (rafId) {
-          cancelAnimationFrame(rafId);
-        }
-      };
-    }
-  }, []);
+  // (Removed high-performance animation effect for static background)
 
-  // Parallax scroll effect
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!heroRef.current) return;
-      const scrollY = window.scrollY;
-      const heroItems = heroRef.current.querySelectorAll('.parallax-item');
-      
-      heroItems.forEach((item) => {
-        const element = item as HTMLElement;
-        const speed = element.dataset.speed || '0.1';
-        element.style.transform = `translateY(${scrollY * parseFloat(speed)}px)`;
-      });
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  // (Removed parallax scroll effect for static background)
 
   return (
     <div ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">

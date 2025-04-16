@@ -122,7 +122,7 @@ const About = () => {
               {
                 name: 'Muhammad Bilal',
                 role: 'Co-Founder & Executive Director',
-                image: 'https://i.ibb.co/JFwdPKM0/bilal.png',
+                image: 'https://i.ibb.co/d4RnytpY/bilal-1.webp',
                 quote: "Innovation isn't just an outcome — it's our directive, where technology and trust align.",
               },
               {
