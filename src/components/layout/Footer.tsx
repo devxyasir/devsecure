@@ -123,7 +123,7 @@ const Footer = () => {
               <span className="absolute -bottom-1 left-0 w-1/2 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"></span>
             </h3>
             <div className="space-y-4">
-              <p className="text-gray-400 text-sm">Join our newsletter to get the latest updates and news.</p>
+              <p className="text-gray-400 text-sm">Stay in the loop — subscribe to our newsletter for the latest updates and news.</p>
               <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
                 <div className="relative">
                   <input
