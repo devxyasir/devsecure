@@ -139,6 +139,28 @@ const developers: Developer[] = [
   },
     {
     id: 5,
+    name: 'Muhammad Akbar',
+    position: 'Social Media & Marketing Team',
+    image: 'https://i.ibb.co/8g9cvQtK/M-Akbar-1.webp',
+    bio: 'Expert in social media handling, marketing, and AI automation. Drives growth and engagement through innovative digital strategies and automation tools.',
+    skills: [
+      { name: 'Social Media Handling', level: 92, color: 'blue' },
+      { name: 'Marketing', level: 89, color: 'green' },
+      { name: 'AI Automation', level: 85, color: 'purple' }
+    ],
+    social: {
+      github: 'https://github.com/makbar-56',
+      linkedin: '',
+      email: 'muhammadakbarfida56@gmail.com'
+    },
+    projects: [
+      'AI-Driven Campaigns',
+      'Brand Engagement Automation',
+      'Social Analytics Platform'
+    ]
+  },
+  {
+    id: 6,
     name: 'Muhammad Faraz',
     position: 'SEO Specialist & Digital Marketer',
     image: 'https://i.ibb.co/0RtPgZ5F/faraz.webp',
