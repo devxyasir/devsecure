@@ -61,11 +61,11 @@ const developers: Developer[] = [
     image: 'https://i.ibb.co/d4RnytpY/bilal-1.webp',
     bio: 'Systems architect specializing in identity platforms and cloud-native automation. Expert in React, Node.js, Docker, and PaaS-driven deployments.',
     skills: [
-      { name: 'MERN Stack', level: 80, color: 'red' },
-      { name: '.Net Framework', level: 85, color: 'blue' },
-      { name: 'Databases', level: 80, color: 'purple' },
-      { name: 'React Native', level: 75, color: 'orange' },
-      { name: 'DevOps', level: 85, color: 'cyan' }
+      { name: 'MERN Stack', level: 95, color: 'red' },
+      { name: '.Net Framework', level: 90, color: 'blue' },
+      { name: 'Databases', level: 90, color: 'purple' },
+      { name: 'React Native', level: 85, color: 'orange' },
+      { name: 'DevOps', level: 90, color: 'cyan' }
     ],
     social: {
       github: 'https://github.com/mbilal8136',
