@@ -36,7 +36,7 @@ interface PriceData {
 
 const Plans = () => {
   const [activeCategory, setActiveCategory] = useState<PlanCategory>('custom');
-  const [showPromotion, setShowPromotion] = useState(true);
+  //const [showPromotion, setShowPromotion] = useState(true);
   const [currency, setCurrency] = useState<'pkr' | 'usd'>('pkr');
   const [discountEnds, setDiscountEnds] = useState<string>('');
   const navigate = useNavigate();
@@ -580,7 +580,7 @@ const Plans = () => {
       <div className="container mx-auto relative z-10 max-w-6xl py-16 px-4 sm:px-6 lg:px-8">
 
         <div className="text-center mb-16">
-          <h1 className="section-title text-5xl md:text-6xl mb-6 animate-gradient-x">
+          <h1 className="section-title text-5xl md:text-6xl mt-16 mb-6 pb-3 animate-gradient-x">
             Our Plans & Pricing
           </h1>
           

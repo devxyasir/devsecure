@@ -346,8 +346,8 @@ const Hero = () => {
             </div>
             
             {/* Secondary headline with quantum styling - with clear separation and fixed position */}
-            <div className="relative animate-slide-up mt-8" style={{ animationDelay: '0.3s' }}>
-              <p className="text-2xl md:text-4xl lg:text-5xl font-bold text-white text-neon leading-normal md:leading-normal">
+            <div className="relative animate-slide-up mt-8 " style={{ animationDelay: '0.3s' }}>
+              <p className="text-2xl md:text-4xl lg:text-5xl font-bold text-white text-neon leading-normal md:leading-normal ">
                 Securing the Future of Technology
               </p>
               <div className="absolute -bottom-4 w-32 h-px left-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-blue-500 to-transparent animate-pulse-slow mt-4"></div>

@@ -495,7 +495,7 @@ const Services: React.FC = () => {
 
       <div className="container mx-auto px-4">
         <div className="mb-16 text-center hardware-accelerated">
-          <h2 className="section-title text-4xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500">Quantum Solutions Matrix</h2>
+          <h2 className="section-title text-4xl md:text-5xl font-bold mb-4 mt-12 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500">Quantum Solutions Matrix</h2>
           <p className="section-description text-xl text-gray-300 max-w-3xl mx-auto">
             Explore our comprehensive suite of advanced technological services designed to transform your digital ecosystem.
           </p>
