@@ -35,7 +35,7 @@ const Footer = () => {
               </span>
             </Link>
             <p className="text-gray-400 leading-relaxed">
-              Empowering innovation and securing the future of technology .
+              Empowering innovation and securing the future of technology through cutting-edge solutions .
             </p>
             <div className="pt-3">
               <Link 
