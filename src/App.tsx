@@ -14,6 +14,15 @@ const RequestPlan = lazy(() => import('./components/pages/RequestPlan'));
 const PrivacyPolicy = lazy(() => import('./components/pages/PrivacyPolicy'));
 const TermsOfService = lazy(() => import('./components/pages/TermsOfService'));
 
+// Additional legal and policy pages
+const ShippingPolicy = lazy(() => import('./components/pages/ShippingPolicy'));
+const RefundPolicy = lazy(() => import('./components/pages/RefundPolicy'));
+const CookiePolicy = lazy(() => import('./components/pages/CookiePolicy'));
+const GDPRCompliance = lazy(() => import('./components/pages/GDPRCompliance'));
+const CCPACompliance = lazy(() => import('./components/pages/CCPACompliance'));
+const AccessibilityStatement = lazy(() => import('./components/pages/AccessibilityStatement'));
+const Disclaimer = lazy(() => import('./components/pages/Disclaimer'));
+
 // Lightweight loading component
 const LoadingFallback = () => (
   <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black flex items-center justify-center">
@@ -43,6 +52,13 @@ function App() {
                 <Route path="/request-plan" element={<RequestPlan />} />
                 <Route path="/privacy" element={<PrivacyPolicy />} />
                 <Route path="/terms" element={<TermsOfService />} />
+                <Route path="/shipping" element={<ShippingPolicy />} />
+                <Route path="/refund" element={<RefundPolicy />} />
+                <Route path="/cookies" element={<CookiePolicy />} />
+                <Route path="/gdpr" element={<GDPRCompliance />} />
+                <Route path="/ccpa" element={<CCPACompliance />} />
+                <Route path="/accessibility" element={<AccessibilityStatement />} />
+                <Route path="/disclaimer" element={<Disclaimer />} />
                 <Route path="*" element={
                   <div className="min-h-screen flex items-center justify-center">
                     <div className="text-center">
