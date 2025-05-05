@@ -4,25 +4,17 @@ import {
   Database, 
   Globe, 
   Smartphone, 
-  Zap, 
-  Hexagon,
-  Search,
-  BarChart,
-  BarChart2,
   Server,
   Settings,
+  Search,
+  BarChart,
   BrainCircuit,
   UserCheck,
   FileCode,
-  Workflow,
-  TrendingUp,
-  ShoppingCart,
-  Code,
-  Layers
+  Workflow
 } from 'lucide-react';
 import SEOHead from '../shared/SEOHead';
 import { throttle } from '../../utils/optimizations';
-import { getAnimationSettings } from '../../utils/animationOptimizer';
 
 // Helper function to get colors based on service color name
 const getColorForService = (colorName: string, shade: string, opacity: number): string => {
@@ -332,264 +324,164 @@ const services: ServiceType[] = [
   }
 ];
 
-const Services: React.FC = () => {
-  const servicesRef = useRef<HTMLDivElement>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+const Services = () => {
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
-  const [visibleSections, setVisibleSections] = useState<number[]>([]);
-  const [hasScrolled, setHasScrolled] = useState(false);
-  
-  // Get animation settings based on device capabilities
-  const animationSettings = useMemo(() => getAnimationSettings(), []);
-  const shouldAnimate = animationSettings.useParallax;
-  
-  // Create structured data for services
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "itemListElement": services.map((service, index) => ({
-      "@type": "ListItem",
-      "position": index + 1,
-      "item": {
-        "@type": "Service",
-        "name": `DevSecure ${service.title}`,
-        "description": service.description,
-        "provider": {
-          "@type": "Organization",
-          "name": "DevSecure",
-          "url": "https://devsecure.com/"
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  // Simplified scroll handler with increased throttle time
+  const handleScroll = useMemo(
+    () =>
+      throttle(() => {
+        if (!sectionRef.current) return;
+
+        const rect = sectionRef.current.getBoundingClientRect();
+        const isInView = rect.top < window.innerHeight && rect.bottom >= 0;
+        
+        setIsVisible(isInView);
+      }, 250), // Increased throttle time from 100ms to 250ms
+    []
+  );
+
+  useEffect(() => {
+    // Only add scroll listener if IntersectionObserver is not available
+    if (!('IntersectionObserver' in window)) {
+      window.addEventListener('scroll', handleScroll);
+      handleScroll(); // Check initial visibility
+      
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    } else {
+      // Use IntersectionObserver for better performance
+      const observer = new IntersectionObserver(
+        (entries) => {
+          setIsVisible(entries[0].isIntersecting);
         },
-        "serviceType": service.title
+        { threshold: 0.1 }
+      );
+      
+      if (sectionRef.current) {
+        observer.observe(sectionRef.current);
       }
-    }))
+      
+      return () => {
+        if (sectionRef.current) {
+          observer.unobserve(sectionRef.current);
+        }
+        observer.disconnect();
+      };
+    }
+  }, [handleScroll]);
+
+  // Simplified rendering of service cards without animated hover effects for better performance
+  const renderServiceCards = () => {
+    return (
+      <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{transition: 'opacity 0.5s ease-in-out'}}>
+        {services.map((service, index) => {
+          const isHovered = hoverIndex === index;
+
+          return (
+            <div 
+              key={index}
+              className="service-card group relative"
+              onMouseEnter={() => setHoverIndex(index)}
+              onMouseLeave={() => setHoverIndex(null)}
+            >
+              <div className="relative p-6 h-full quantum-panel transform will-change-transform">
+                <div className="flex items-start">
+                  {/* Simplified icon container */}
+                  <div className="relative mr-4">
+                    {/* Static icon background */}
+                    <div className="relative z-10 hologram-panel p-3 rounded-xl">
+                      <service.icon 
+                        className="h-8 w-8"
+                        style={{
+                          color: getColorForService(service.color, '400', 1)
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Service title and description */}
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold mb-2 text-white">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-400 text-sm mb-4">
+                      {service.description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Simplified skills showcase */}
+                <div className="mt-6">
+                  <div className="text-gray-400 text-xs mb-2 flex justify-between items-center">
+                    <span>Core Competencies</span>
+                    <span className="text-gray-500">{service.subSkills.length} skills</span>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    {/* Limited number of skills shown for performance */}
+                    {service.subSkills.slice(0, isHovered ? 8 : 4).map((skill, idx) => (
+                      <div 
+                        key={idx} 
+                        className="text-xs py-1.5 px-2 glass-panel rounded-md flex items-center text-white"
+                      >
+                        <div className="h-1 w-1 rounded-full mr-1.5 bg-white"></div>
+                        <span className="line-clamp-1">{skill}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    );
   };
 
-  // Note: additionalServices are not currently used in the rendered component
-  // Keeping them for potential future use
-  const _unusedAdditionalServices = [
-    {
-      icon: TrendingUp,
-      title: 'SEO & Marketing',
-      color: 'green',
-      isCore: false
-    },
-    {
-      icon: Smartphone,
-      title: 'Mobile Apps',
-      color: 'blue',
-      isCore: false
-    },
-    {
-      icon: Database,
-      title: 'Database Engineering',
-      color: 'yellow',
-      isCore: false
-    },
-    {
-      icon: BarChart2,
-      title: 'Data Analytics',
-      color: 'orange',
-      isCore: false
-    },
-    {
-      icon: ShoppingCart,
-      title: 'E-commerce',
-      color: 'pink',
-      isCore: false
-    },
-    {
-      icon: Code,
-      title: 'Custom Software',
-      color: 'violet',
-      isCore: false
-    },
-    {
-      icon: Layers,
-      title: 'UX/UI Design',
-      color: 'emerald',
-      isCore: false
-    },
-    {
-      icon: Zap,
-      title: 'API & Integration',
-      color: 'amber',
-      isCore: false
-    },
-  ];
-
-  // Track mouse position for quantum field effects - with throttling
-  useEffect(() => {
-    if (!servicesRef.current || !shouldAnimate) return;
-    
-    const handleMouseMove = throttle((e: MouseEvent) => {
-      const rect = servicesRef.current?.getBoundingClientRect();
-      if (rect) {
-        setMousePosition({
-          x: e.clientX - rect.left,
-          y: e.clientY - rect.top
-        });
-      }
-    }, 50);
-    
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [servicesRef, shouldAnimate]);
-  
-  // Detect scroll position for animations - with throttling
-  useEffect(() => {
-    const handleScroll = throttle(() => {
-      setHasScrolled(true);
-      
-      if (servicesRef.current) {
-        const elements = servicesRef.current.querySelectorAll('.service-card');
-        const newVisibleSections: number[] = [];
-        
-        elements.forEach((section, index) => {
-          const rect = section.getBoundingClientRect();
-          if (rect.top < window.innerHeight * 0.8 && rect.bottom > 0) {
-            newVisibleSections.push(index);
-          }
-        });
-        
-        setVisibleSections(newVisibleSections);
-      }
-    }, 100);
-    
-    handleScroll(); // Check initial state
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
-    <section id="services" ref={servicesRef} className="py-20 relative overflow-hidden hardware-accelerated">
+    <section id="services" ref={sectionRef} className="py-20 relative overflow-hidden hardware-accelerated">
       <SEOHead
         title="DevSecure Innovative Technology Services"  
         description="Explore DevSecure's comprehensive technology service offerings including web development, mobile apps, cybersecurity, AI integration, cloud solutions, and digital marketing. Our quantum-inspired approach ensures cutting-edge innovation for your business."
         keywords="DevSecure services, DevSecure technology, DevSecure web development, DevSecure mobile apps, DevSecure cybersecurity, DevSecure AI solutions, DevSecure innovation, quantum-inspired development, secure technology solutions, advanced digital services"
         currentPage="/services"
-        structuredData={structuredData}
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "itemListElement": services.map((service, index) => ({
+            "@type": "ListItem",
+            "position": index + 1,
+            "item": {
+              "@type": "Service",
+              "name": `DevSecure ${service.title}`,
+              "description": service.description,
+              "provider": {
+                "@type": "Organization",
+                "name": "DevSecure",
+                "url": "https://devsecure.com/"
+              },
+              "serviceType": service.title
+            }
+          }))
+        }}
       />
-      {/* Quantum field background - static version for better performance */}
-      <div className="absolute inset-0 bg-black">
-        {/* Background gradients - simplified for performance */}
-        <div className="absolute inset-0 opacity-30 bg-gradient-to-b from-blue-900/20 via-transparent to-transparent" />
-        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_center,rgba(16,65,232,0.15),transparent_80%)]" />
-        <div className="absolute inset-0 opacity-5 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:14px_14px]" />
-      </div>
-
-      {/* Interactive quantum cursor effect - only render if device supports it */}
-      {shouldAnimate && (
-        <div 
-          className="absolute pointer-events-none opacity-10 mix-blend-screen hardware-accelerated" 
-          style={{
-            background: `radial-gradient(400px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(14,165,233,0.15), transparent 80%)`,
-            height: '200%',
-            width: '200%',
-            left: '-50%',
-            top: '-50%',
-            transform: 'translate(0%, 0%) translateZ(0)',
-            willChange: 'background',
-          }}
-        />
-      )}
-
-      <div className="container mx-auto px-4">
-        <div className="mb-16 text-center hardware-accelerated">
+      <div className="absolute inset-0 bg-black opacity-90"></div>
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="mb-16 text-center">
           <h2 className="section-title text-4xl md:text-5xl font-bold mb-4 mt-12 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500">Quantum Solutions Matrix</h2>
           <p className="section-description text-xl text-gray-300 max-w-3xl mx-auto">
             Explore our comprehensive suite of advanced technological services designed to transform your digital ecosystem.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => {
-            const isHovered = hoverIndex === index;
-
-            return (
-              <div 
-                key={index}
-                className="service-card group relative"
-                onMouseEnter={() => hoverIndex === null && setHoverIndex(index)}
-                onMouseLeave={() => setHoverIndex(null)}
-              >
-                <div className="relative p-6 h-full quantum-panel transform transition-all duration-300 hover:scale-[1.02] hover:shadow-glow-optimized hardware-accelerated">
-                  {/* Static decoration instead of animated geometry */}
-                  <div className="absolute top-0 right-0 -mt-4 -mr-4 opacity-0 group-hover:opacity-60 transition-opacity duration-300 hidden lg:block">
-                    <Hexagon 
-                      style={{ 
-                        color: getColorForService(service.color, '500', 0.2)
-                      }}
-                      size={60} 
-                    />
-                  </div>
-
-                  <div className="flex items-start">
-                    {/* Quantum icon container */}
-                    <div className="relative mr-4 hardware-accelerated">
-                      {/* Simplified energy field around icon */}
-                      <div className={`absolute -inset-4 rounded-full blur-sm opacity-0 ${isHovered ? 'opacity-70' : ''} transition-opacity duration-300`}
-                        style={{
-                          background: getColorForService(service.color, '500', 0.1)
-                        }}
-                      ></div>
-
-                      {/* Optimized icon container */}
-                      <div className="relative z-10 hologram-panel p-3 rounded-xl">
-                        <service.icon 
-                          className={`h-8 w-8 transition-all duration-300 hardware-accelerated`}
-                          style={{
-                            color: getColorForService(service.color, '400', 1)
-                          }}
-                        />
-                      </div>
-                    </div>
-
-                    {/* Service title and description */}
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold mb-2 text-white">
-                        {service.title}
-                      </h3>
-                      <p className="text-gray-400 text-sm mb-4">
-                        {service.description}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Skills showcase with hover effect */}
-                  <div className="mt-6">
-                    <div className="text-gray-400 text-xs mb-2 flex justify-between items-center">
-                      <span>Core Competencies</span>
-                      <span className="text-gray-500">{service.subSkills.length} skills</span>
-                    </div>
-
-                    <div className="flex flex-wrap gap-2">
-                      {service.subSkills.slice(0, isHovered ? 12 : 6).map((skill, idx) => (
-                        <div 
-                          key={idx} 
-                          className="text-xs py-1.5 px-2 glass-panel rounded-md flex items-center text-white hardware-accelerated"
-                          style={{ 
-                            opacity: 1,
-                            transform: 'translateZ(0)',
-                            transitionProperty: 'opacity, transform',
-                            transitionDuration: '300ms',
-                            transitionTimingFunction: 'ease-out'
-                          }}
-                        >
-                          <div className="h-1 w-1 rounded-full mr-1.5 bg-white"></div>
-                          <span className="line-clamp-1">{skill}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        {renderServiceCards()}
       </div>
     </section>
   );
 };
-
 
 export default Services;

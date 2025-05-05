@@ -1,114 +1,88 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { Shield, ArrowRight, ChevronDown, Hexagon, Atom, Sparkles, Zap,  Cpu, Code, Database, Server  } from 'lucide-react';
+import React, { useRef } from 'react';
+import { Shield, ArrowRight, ChevronDown, Hexagon, Atom, Sparkles, Zap, Cpu, Code, Database, Server } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-// Using a simple animation function instead of gsap for better performances
-if (typeof document !== 'undefined') {
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.4; transform: scale(0.8); }
-      50% { opacity: 1; transform: scale(1.2); }
-    }
-    
-    @keyframes shooting-star {
-      0% { transform: translateX(0) translateY(0) rotate(-45deg); opacity: 0; }
-      15% { opacity: 1; }
-      60% { opacity: 1; }
-      100% { transform: translateX(-1000px) translateY(1000px) rotate(-45deg); opacity: 0; }
-    }
-    
-    @keyframes nebula-pulse {
-      0%, 100% { opacity: 0.7; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.1); }
-    }
-  `;
-  document.head.appendChild(style);
-}
+// Add CSS animations directly to the global stylesheet instead of dynamically
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   
-  // (Removed mouse tracking effect for static background)
-  
-  // (Removed high-performance animation effect for static background)
-
-  // (Removed parallax scroll effect for static background)
+  // Removed all mouse tracking, parallax, and high-performance animations for better performance
 
   return (
     <div ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
-      {/* Cosmic universe background */}
+      {/* Optimized cosmic background - using CSS background instead of DOM elements */}
       <div className="absolute inset-0 overflow-hidden bg-gradient-to-b from-[#030723] via-[#0e0b35] to-[#08031a]">
-        {/* Star field layers */}
-        <div className="absolute inset-0">
-          {/* Generate animated stars - different sizes and animation speeds */}
-          {[...Array(200)].map((_, i) => {
+        {/* Pre-rendered star field background - using CSS background image */}
+        <div className="absolute inset-0 bg-stars">
+          {/* Only render 50 stars instead of 200 for better performance */}
+          {[...Array(50)].map((_, i) => {
             const size = Math.random() * 2;
-            const animDuration = 4 + Math.random() * 20;
             const top = Math.random() * 100;
             const left = Math.random() * 100;
-            const delay = Math.random() * 10;
             const opacity = 0.1 + Math.random() * 0.9;
             
             return (
               <div
                 key={i}
-                className="absolute rounded-full animate-twinkle"
+                className="absolute rounded-full"
                 style={{
                   width: `${size}px`,
                   height: `${size}px`,
                   top: `${top}%`,
                   left: `${left}%`,
                   backgroundColor: i % 5 === 0 ? '#a5f3fc' : i % 3 === 0 ? '#e0f2fe' : '#f1f5f9',
-                  animationDuration: `${animDuration}s`,
-                  animationDelay: `${delay}s`,
-                  opacity
+                  opacity,
+                  // Use transform: translateZ(0) to enable hardware acceleration
+                  transform: 'translateZ(0)',
+                  willChange: 'opacity'
                 }}
               />
             );
           })}
         </div>
         
-        {/* Distant nebula and cosmic clouds */}
-        <div className="absolute inset-0 opacity-60">
-          {/* Purple nebula */}
+        {/* Simplified cosmic effect - reduced number of elements */}
+        <div className="absolute inset-0 opacity-40">
+          {/* Purple nebula - pre-rendered with reduced effects */}
           <div 
-            className="absolute rounded-full blur-3xl animate-pulse-slow"
+            className="absolute rounded-full blur-2xl"
             style={{
               width: '30%',
               height: '30%',
               top: '15%',
               right: '10%',
-              background: 'radial-gradient(circle at center, rgba(139, 92, 246, 0.3) 0%, rgba(139, 92, 246, 0) 70%)',
-              animationDuration: '30s'
+              background: 'radial-gradient(circle at center, rgba(139, 92, 246, 0.2) 0%, rgba(139, 92, 246, 0) 70%)',
+              transform: 'translateZ(0)',
+              willChange: 'transform'
             }}
           ></div>
           
           {/* Blue nebula */}
           <div 
-            className="absolute rounded-full blur-3xl animate-pulse-slow"
+            className="absolute rounded-full blur-2xl"
             style={{
               width: '40%',
               height: '40%',
               bottom: '5%',
               left: '10%',
               background: 'radial-gradient(circle at center, rgba(56, 189, 248, 0.2) 0%, rgba(56, 189, 248, 0) 70%)',
-              animationDuration: '25s',
-              animationDelay: '2s'
+              transform: 'translateZ(0)',
+              willChange: 'transform'
             }}
           ></div>
           
           {/* Teal cosmic cloud */}
           <div 
-            className="absolute rounded-full blur-3xl animate-float"
+            className="absolute rounded-full blur-2xl"
             style={{
               width: '25%',
               height: '25%',
               top: '40%',
               left: '30%',
               background: 'radial-gradient(circle at center, rgba(45, 212, 191, 0.15) 0%, rgba(45, 212, 191, 0) 70%)',
-              animationDuration: '40s'
+              transform: 'translateZ(0)',
+              willChange: 'transform'
             }}
           ></div>
         </div>
@@ -155,24 +129,13 @@ const Hero = () => {
           ></div>
         </div>
         
-        {/* Dimensional wormhole effect - follows cursor */}
-        <div 
-          className="absolute w-[600px] h-[600px] rounded-full pointer-events-none transition-all duration-3000 ease-spring"
-          style={{
-            background: 'radial-gradient(circle at center, rgba(0, 255, 170, 0.01) 0%, transparent 70%)',
-            boxShadow: 'inset 0 0 50px rgba(0, 255, 170, 0.1)',
-            left: `${cursorPosition.x - 300}px`,
-            top: `${cursorPosition.y - 300}px`,
-            transform: 'translateZ(0)',
-            opacity: 0.6,
-          }}
-        ></div>
+        {/* Removed dynamic cursor-following wormhole effect */}
       </div>
       
-      {/* Multi-dimensional particle systems */}
+      {/* Reduced particle systems */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Quantum light particles */}
-        {[...Array(60)].map((_, i) => {
+        {/* Quantum light particles - reduced from 60 to 20 for performance */}
+        {[...Array(20)].map((_, i) => {
           const size = Math.random() * 3 + 1;
           const x = Math.random() * 100;
           const y = Math.random() * 100;
@@ -201,8 +164,8 @@ const Hero = () => {
           );
         })}
         
-        {/* Orbital quantum nodes */}
-        {[...Array(10)].map((_, i) => {
+        {/* Orbital quantum nodes - reduced from 10 to 4 */}
+        {[...Array(4)].map((_, i) => {
           const size = Math.random() * 12 + 8;
           const coreSize = size / 3;
           const x = Math.random() * 100;
@@ -246,8 +209,8 @@ const Hero = () => {
           );
         })}
         
-        {/* Dimensional energy nodes */}
-        {[...Array(6)].map((_, i) => {
+        {/* Dimensional energy nodes - reduced from 6 to 2 */}
+        {[...Array(2)].map((_, i) => {
           const size = Math.random() * 80 + 100;
           const x = Math.random() * 100;
           const y = Math.random() * 100;
@@ -300,8 +263,8 @@ const Hero = () => {
                   <Shield className="h-16 w-16 text-future relative z-10 animate-hologram-flicker" />
                 </div>
                 
-                {/* Energy particles */}
-                {[...Array(8)].map((_, i) => {
+                {/* Energy particles - reduced from 8 to 4 */}
+                {[...Array(4)].map((_, i) => {
                   const angle = (i / 8) * Math.PI * 2;
                   const x = Math.cos(angle) * 30;
                   const y = Math.sin(angle) * 30;
