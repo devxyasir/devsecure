@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Menu, X, Shield, ExternalLink, Hexagon, Atom } from 'lucide-react';
+import { Menu, X, Shield, ExternalLink, Hexagon, Atom, ChevronDown, BookOpen } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
@@ -7,10 +7,9 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('/');
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [isLegalDropdownOpen, setIsLegalDropdownOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
-
-
 
   // Close mobile menu when changing routes
   useEffect(() => {
@@ -25,7 +24,7 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
+
   // Random floating particles for navbar
   const particles = Array.from({ length: 20 }, (_, i) => ({
     id: i,
@@ -43,6 +42,22 @@ const Navbar = () => {
     { title: 'Plans', href: '/plans' },
     { title: 'Developers', href: '/developers' },
     { title: 'About', href: '/about' },
+    { 
+      title: 'Legal', 
+      href: '#', 
+      isDropdown: true,
+      dropdownItems: [
+        { title: 'Privacy Policy', href: '/privacy' },
+        { title: 'Terms of Service', href: '/terms' },
+        { title: 'Shipping Policy', href: '/shipping' },
+        { title: 'Refund Policy', href: '/refund' },
+        { title: 'Cookie Policy', href: '/cookies' },
+        { title: 'GDPR Compliance', href: '/gdpr' },
+        { title: 'CCPA Compliance', href: '/ccpa' },
+        { title: 'Accessibility', href: '/accessibility' },
+        { title: 'Disclaimer', href: '/disclaimer' }
+      ]
+    },
   ];
 
   return (
@@ -121,41 +136,57 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-1">
-              {navLinks.map((link, index) => (
-                <Link
-                  key={link.title}
-                  to={link.href}
-                  className={`relative px-4 py-2 rounded-md text-sm font-medium overflow-hidden group transition-all duration-500 ${                  
-                    activeSection === link.href
-                      ? 'text-quantum'
-                      : 'text-gray-300 hover:text-white'
-                  }`}
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                >
-                  {/* Quantum active indicator */}
-                  {activeSection === link.href && (
-                    <>
-                      <span className="absolute inset-0 bg-cyan-500/10 backdrop-blur-sm rounded-md -z-10"></span>
-                      <span className="absolute inset-0 rounded-md border border-cyan-500/30 animate-pulse-slow -z-10"></span>
-                      <div className="absolute -bottom-1 left-1/2 w-1 h-1 bg-cyan-400 rounded-full shadow-neon-cyan -translate-x-1/2"></div>
-                    </>
-                  )}
-                  
-                  {/* Hover effect */}
-                  {hoveredIndex === index && activeSection !== link.href && (
-                    <span className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 rounded-md -z-10 animate-shimmer"></span>
-                  )}
-                  
-                  {/* Text with quantum effect */}
-                  <span className="relative z-10 group-hover:text-hologram transition-all duration-500">{link.title}</span>
-                  
-                  {/* Advanced underline effect for inactive links */}
-                  {activeSection !== link.href && (
-                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent group-hover:w-full transition-all duration-500 ease-spring"></span>
-                  )}
-                </Link>
-              ))}
+              {navLinks.map((link, idx) => 
+                link.isDropdown ? (
+                  <div key={link.title} className="relative group">
+                    <button
+                      className={`relative px-3 py-2 rounded-lg text-sm font-medium transition-all duration-500 ${activeSection.startsWith('/privacy') || activeSection.startsWith('/terms') || activeSection.startsWith('/shipping') || activeSection.startsWith('/refund') || activeSection.startsWith('/cookies') || activeSection.startsWith('/gdpr') || activeSection.startsWith('/ccpa') || activeSection.startsWith('/accessibility') || activeSection.startsWith('/disclaimer') ? 'text-white' : 'text-gray-300 hover:text-white'} flex items-center space-x-1 group`}
+                      onClick={() => setIsLegalDropdownOpen(!isLegalDropdownOpen)}
+                      onMouseEnter={() => setIsLegalDropdownOpen(true)}
+                    >
+                      <span className="relative z-10">{link.title}</span>
+                      <ChevronDown className="h-4 w-4 text-current transition-transform duration-300 group-hover:rotate-180" />
+                      <span className={`absolute inset-0 rounded-lg bg-gradient-to-r from-cyan-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></span>
+                      <div className={`absolute -inset-1 bg-cyan-500/10 rounded-lg blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10`}></div>
+                    </button>
+                    <div 
+                      className={`absolute mt-1 left-0 w-56 rounded-md shadow-lg bg-gray-900 ring-1 ring-gray-800 divide-y divide-gray-700 z-20 transform transition-all duration-300 origin-top-left ${
+                        isLegalDropdownOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0 pointer-events-none'
+                      }`}
+                      onMouseLeave={() => setIsLegalDropdownOpen(false)}
+                    >
+                      <div className="py-1 backdrop-blur-xl bg-black/70 rounded-md">
+                        {link.dropdownItems?.map((item) => (
+                          <Link
+                            key={item.title}
+                            to={item.href}
+                            className="block px-4 py-2 text-sm text-gray-300 hover:bg-cyan-800/20 hover:text-white transition-colors duration-300 flex items-center space-x-2"
+                            onClick={() => setIsLegalDropdownOpen(false)}
+                          >
+                            <BookOpen className="h-4 w-4 text-cyan-400" />
+                            <span>{item.title}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    key={link.title}
+                    to={link.href}
+                    className={`relative px-3 py-2 rounded-lg text-sm font-medium transition-all duration-500 ${activeSection === link.href ? 'text-white' : 'text-gray-300 hover:text-white'} group`}
+                    onMouseEnter={() => setHoveredIndex(idx)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                  >
+                    <span className="relative z-10">{link.title}</span>
+                    <span className={`absolute inset-0 rounded-lg bg-gradient-to-r from-cyan-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${activeSection === link.href ? 'opacity-100' : ''}`}></span>
+                    <div className={`absolute -inset-1 bg-cyan-500/10 rounded-lg blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 ${activeSection === link.href ? 'opacity-100' : ''}`}></div>
+                    {activeSection === link.href && (
+                      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-400 animate-shimmer"></div>
+                    )}
+                  </Link>
+                )
+              )}
               <Link
                 to="/contact"
                 className="group relative ml-3 hologram-button overflow-hidden transition-all duration-500 flex items-center"
@@ -194,26 +225,56 @@ const Navbar = () => {
         <div className="quantum-panel backdrop-blur-xl border-t border-violet-500/20 shadow-neon-cyan">
           <div className="absolute inset-0 animate-data-stream opacity-20"></div>
           <div className="px-4 pt-2 pb-4 space-y-2 divide-y divide-gray-800/20 relative z-10">
-            {navLinks.map((link, idx) => (
-              <Link
-                key={link.title}
-                to={link.href}
-                className={`block px-4 py-3 text-base font-medium rounded-md transition-all duration-500 animate-slide-up ${
-                  activeSection === link.href
-                    ? 'text-quantum bg-cyan-900/20'
-                    : 'text-gray-300 hover:bg-violet-900/10 hover:text-white'
-                }`}
-                style={{ animationDelay: `${idx * 0.1}s` }}
-              >
-                <div className="flex items-center space-x-2">
-                  <Atom className={`w-4 h-4 ${activeSection === link.href ? 'text-cyan-300 animate-spin-slow' : 'text-cyan-700'}`} />
-                  <span className={`${activeSection === link.href ? 'text-hologram' : ''}`}>{link.title}</span>
+            {navLinks.map((link, idx) => 
+              link.isDropdown ? (
+                <div key={link.title}>
+                  <button
+                    onClick={() => setIsLegalDropdownOpen(!isLegalDropdownOpen)}
+                    className={`w-full flex justify-between items-center px-4 py-3 text-base font-medium rounded-md transition-all duration-500 animate-slide-up text-gray-300 hover:bg-violet-900/10 hover:text-white`}
+                    style={{ animationDelay: `${idx * 0.1}s` }}
+                  >
+                    <div className="flex items-center space-x-2">
+                      <BookOpen className="w-4 h-4 text-cyan-700" />
+                      <span>{link.title}</span>
+                    </div>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isLegalDropdownOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  
+                  {isLegalDropdownOpen && (
+                    <div className="pl-8 pr-4 pb-2 space-y-1 animate-fade-in">
+                      {link.dropdownItems?.map((item) => (
+                        <Link
+                          key={item.title}
+                          to={item.href}
+                          className={`block px-3 py-2 text-sm font-medium rounded-md transition-colors duration-300 ${activeSection === item.href ? 'text-cyan-400 bg-gray-800/50' : 'text-gray-400 hover:text-white hover:bg-gray-800/30'}`}
+                        >
+                          {item.title}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
                 </div>
-                {activeSection === link.href && (
-                  <div className="mt-1 h-px bg-gradient-to-r from-transparent via-cyan-500 to-transparent animate-shimmer"></div>
-                )}
-              </Link>
-            ))}
+              ) : (
+                <Link
+                  key={link.title}
+                  to={link.href}
+                  className={`block px-4 py-3 text-base font-medium rounded-md transition-all duration-500 animate-slide-up ${
+                    activeSection === link.href
+                      ? 'text-quantum bg-cyan-900/20'
+                      : 'text-gray-300 hover:bg-violet-900/10 hover:text-white'
+                  }`}
+                  style={{ animationDelay: `${idx * 0.1}s` }}
+                >
+                  <div className="flex items-center space-x-2">
+                    <Atom className={`w-4 h-4 ${activeSection === link.href ? 'text-cyan-300 animate-spin-slow' : 'text-cyan-700'}`} />
+                    <span className={`${activeSection === link.href ? 'text-hologram' : ''}`}>{link.title}</span>
+                  </div>
+                  {activeSection === link.href && (
+                    <div className="mt-1 h-px bg-gradient-to-r from-transparent via-cyan-500 to-transparent animate-shimmer"></div>
+                  )}
+                </Link>
+              )
+            )}
             <div className="pt-2">
               <Link
                 to="/contact"

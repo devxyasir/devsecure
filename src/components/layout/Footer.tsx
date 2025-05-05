@@ -60,9 +60,9 @@ const Footer = () => {
                 { title: 'About', path: '/about' },
                 { title: 'Services', path: '/services' },
                 { title: 'Projects', path: '/projects' },
-                { title: 'Contact', path: '/contact' },
-                { title: 'Privacy Policy', path: '/privacy' },
-                { title: 'Terms of Service', path: '/terms' }
+                { title: 'Plans', path: '/plans' },
+                { title: 'Developers', path: '/developers' },
+                { title: 'Contact', path: '/contact' }
               ].map((link) => (
                 <li key={link.title}>
                   <Link
@@ -79,10 +79,41 @@ const Footer = () => {
             </ul>
           </div>
 
+          {/* Legal & Policies */}
+          <div>
+            <h3 className="text-white font-semibold mb-4 text-lg relative inline-block">
+              <span>Legal & Policies</span>
+              <span className="absolute -bottom-1 left-0 w-1/2 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"></span>
+            </h3>
+            <ul className="space-y-2 grid grid-cols-1 gap-y-2">
+              {[
+                { title: 'Privacy Policy', path: '/privacy' },
+                { title: 'Terms of Service', path: '/terms' },
+                { title: 'Shipping Policy', path: '/shipping' },
+                { title: 'Refund Policy', path: '/refund' },
+                { title: 'Cookie Policy', path: '/cookies' },
+                { title: 'GDPR Compliance', path: '/gdpr' },
+                { title: 'CCPA Compliance', path: '/ccpa' },
+                { title: 'Accessibility', path: '/accessibility' },
+                { title: 'Disclaimer', path: '/disclaimer' }
+              ].map((link) => (
+                <li key={link.title}>
+                  <Link
+                    to={link.path}
+                    className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm flex items-center space-x-1 group"
+                  >
+                    <span className="relative">→</span>
+                    <span className="group-hover:translate-x-0.5 transition-transform duration-300">{link.title}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Contact Info */}
           <div>
             <h3 className="text-white font-semibold mb-4 text-lg relative inline-block">
-              <span>Contact</span>
+              <span>Contact Info</span>
               <span className="absolute -bottom-1 left-0 w-1/2 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"></span>
             </h3>
             <ul className="space-y-3">
