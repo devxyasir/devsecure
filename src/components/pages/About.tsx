@@ -121,7 +121,7 @@ const About = () => {
             {[
               {
                 name: 'Muhammad Bilal',
-                role: 'CEO & Founder',
+                role: 'CEO & Co-Founder',
                 image: 'https://i.ibb.co/d4RnytpY/bilal-1.webp',
                 quote: "Innovation isn't just an outcome — it's our directive, where technology and trust align.",
               },
@@ -133,7 +133,7 @@ const About = () => {
               },
               {
                 name: 'Muhammad Arslan',
-                role: 'MD & Founder ',
+                role: 'MD & Co-Founder ',
                 image: 'https://i.ibb.co/Mxqds843/ars.webp',
                 quote: 'We don’t just develop — we architect digital experiences that perform, scale, and evolve.',
               },
