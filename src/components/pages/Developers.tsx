@@ -42,7 +42,7 @@ const developers: Developer[] = [
     ],
     social: {
       github: 'https://github.com/devxyasir',
-      linkedin: 'https://linkedin.com/in/devxyasir',
+      // linkedin: 'https://linkedin.com/in/devxyasir',
       email: 'jamyasir0534@gmail.com'
     },
     projects: [
@@ -68,9 +68,9 @@ const developers: Developer[] = [
       { name: 'Python', level: 92, color: 'orange' }
     ],
     social: {
-      github: 'https://github.com/iacmujahid',
-      linkedin: 'https://linkedin.com/in/iacmujahid',
-      email: 'mujimalik0324@gmail.com'
+      github:  'https://github.com/Mudasir345',
+      // linkedin: 'https://linkedin.com/in/iacmujahid',
+      email: 'mudasirchoudhry345@gmail.com'
     },
    projects: [
   'AI-Powered Technology Market Analyzer (Next.js + Python)',
