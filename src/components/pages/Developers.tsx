@@ -62,7 +62,7 @@ const developers: Developer[] = [
     bio: 'Strategic market researcher and lead developer with expertise in identifying technological trends and translating market insights into innovative product solutions. Specializes in competitive analysis and user-centered development.',
     skills: [
       { name: 'AI & Automation', level: 95, color: 'blue' },
-      { name: 'NExt JS', level: 90, color: 'cyan' },
+      { name: 'Next JS', level: 90, color: 'cyan' },
       { name: 'Mern Stack', level: 88, color: 'violet' },
       { name: 'Angular Js', level: 85, color: 'green' },
       { name: 'Python', level: 92, color: 'orange' }
