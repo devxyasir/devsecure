@@ -192,7 +192,7 @@ const developers: Developer[] = [
       'Content Strategy Development',
       'B2B SEO Campaign Management'
     ]
-  }
+  },
    {
     id: 6,
     name: 'Muhammad Akbar',
