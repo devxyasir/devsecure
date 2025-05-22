@@ -54,8 +54,36 @@ const developers: Developer[] = [
       'Sleepy Furniture E-commerce'
     ]
   },
-  {
+   {
     id: 2,
+    name: 'Muhammad Mudasir',
+    position: 'Senior Full Stack Developer',
+    image: 'https://i.ibb.co/zT0w2gTZ/muji.webp',
+    bio: 'Strategic market researcher and lead developer with expertise in identifying technological trends and translating market insights into innovative product solutions. Specializes in competitive analysis and user-centered development.',
+    skills: [
+      { name: 'AI & Automation', level: 95, color: 'blue' },
+      { name: 'NExt JS', level: 90, color: 'cyan' },
+      { name: 'Mern Stack', level: 88, color: 'violet' },
+      { name: 'Angular Js', level: 85, color: 'green' },
+      { name: 'Python', level: 92, color: 'orange' }
+    ],
+    social: {
+      github: 'https://github.com/iacmujahid',
+      linkedin: 'https://linkedin.com/in/iacmujahid',
+      email: 'mujimalik0324@gmail.com'
+    },
+   projects: [
+  'AI-Powered Technology Market Analyzer (Next.js + Python)',
+  'Real-time Competitor Intelligence Dashboard (MERN + AI)',
+  'E-commerce Strategy Optimizer with Predictive Analytics (AngularJS + Python)',
+  'User Behavior & Research Insights Panel (MERN + AI)',
+  'Product Strategy Planner using NLP Analysis (Next.js + Python)',
+  'Growth Analytics System with Automation Triggers (AngularJS + AI)'
+]
+  },
+  
+  {
+    id: 3,
     name: 'Muhammad Bilal',
     position: 'Senior Full Stack Developer',
     image: 'https://i.ibb.co/d4RnytpY/bilal-1.webp',
@@ -83,7 +111,7 @@ const developers: Developer[] = [
   },
 
   {
-    id: 3,
+    id: 4,
     name: 'Muhammad Arslan',
     position: 'Senior Full Stack Developer',
     image: 'https://i.ibb.co/Mxqds843/ars.webp',
@@ -110,8 +138,8 @@ const developers: Developer[] = [
       'Job Finder Portal'
     ]
   },
-  {
-    id: 4,
+ {
+    id: 5,
     name: 'Muhammad Mujahid',
     position: 'Lead Developer & Market Researcher',
     image: 'https://i.ibb.co/zT0w2gTZ/muji.webp',
@@ -137,28 +165,7 @@ const developers: Developer[] = [
       'Growth Analytics Portal'
     ]
   },
-    {
-    id: 5,
-    name: 'Muhammad Akbar',
-    position: 'Social Media & Marketing Team',
-    image: 'https://i.ibb.co/8g9cvQtK/M-Akbar-1.webp',
-    bio: 'Expert in social media handling, marketing, and AI automation. Drives growth and engagement through innovative digital strategies and automation tools.',
-    skills: [
-      { name: 'Social Media Handling', level: 92, color: 'blue' },
-      { name: 'Marketing', level: 89, color: 'green' },
-      { name: 'AI Automation', level: 85, color: 'purple' }
-    ],
-    social: {
-      github: 'https://github.com/makbar-56',
-      linkedin: '',
-      email: 'muhammadakbarfida56@gmail.com'
-    },
-    projects: [
-      'AI-Driven Campaigns',
-      'Brand Engagement Automation',
-      'Social Analytics Platform'
-    ]
-  },
+   
   {
     id: 6,
     name: 'Muhammad Faraz',
@@ -186,6 +193,28 @@ const developers: Developer[] = [
       'B2B SEO Campaign Management'
     ]
   }
+   {
+    id: 6,
+    name: 'Muhammad Akbar',
+    position: 'Social Media & Marketing Team',
+    image: 'https://i.ibb.co/8g9cvQtK/M-Akbar-1.webp',
+    bio: 'Expert in social media handling, marketing, and AI automation. Drives growth and engagement through innovative digital strategies and automation tools.',
+    skills: [
+      { name: 'Social Media Handling', level: 92, color: 'blue' },
+      { name: 'Marketing', level: 89, color: 'green' },
+      { name: 'AI Automation', level: 85, color: 'purple' }
+    ],
+    social: {
+      github: 'https://github.com/makbar-56',
+      linkedin: '',
+      email: 'muhammadakbarfida56@gmail.com'
+    },
+    projects: [
+      'AI-Driven Campaigns',
+      'Brand Engagement Automation',
+      'Social Analytics Platform'
+    ]
+  },
 ];
 
 const DeveloperModal: React.FC<{
