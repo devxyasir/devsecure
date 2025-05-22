@@ -58,7 +58,7 @@ const developers: Developer[] = [
     id: 2,
     name: 'Muhammad Mudasir',
     position: 'Senior Full Stack Developer',
-    image: 'https://i.ibb.co/zT0w2gTZ/muji.webp',
+    image: 'https://i.ibb.co/MxmYBHVv/Whats-App-Image-2025-05-22-at-10-00-40-255b1771.jpg',
     bio: 'Strategic market researcher and lead developer with expertise in identifying technological trends and translating market insights into innovative product solutions. Specializes in competitive analysis and user-centered development.',
     skills: [
       { name: 'AI & Automation', level: 95, color: 'blue' },
