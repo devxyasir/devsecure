@@ -30,7 +30,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   width,
   height,
   className = '',
-  placeholderColor = '#0f172a', // Dark slate color matching DevSecure theme
+  placeholderColor = '#0f172a', // Dark slate color matching Intelliphic theme
   priority = false,
   onLoad
 }) => {

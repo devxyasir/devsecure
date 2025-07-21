@@ -168,11 +168,11 @@ ${formData.message || 'No additional information provided.'}
     },
     "mainEntity": {
       "@type": "Service",
-      "name": "DevSecure Plan Request",
-      "description": "Request a custom technology plan from DevSecure tailored to your business needs. Our innovative solutions help transform your digital presence.",
+      "name": "Intelliphic Plan Request",
+      "description": "Request a custom technology plan from Intelliphic tailored to your business needs. Our innovative solutions help transform your digital presence.",
       "provider": {
         "@type": "Organization",
-        "name": "DevSecure Technology Solutions"
+        "name": "Intelliphic Technology Solutions"
       },
       "serviceType": "Technology Development Services"
     }
@@ -181,9 +181,9 @@ ${formData.message || 'No additional information provided.'}
   return (
     <div className="min-h-screen relative overflow-hidden py-16 px-4 sm:px-6 lg:px-8">
       <SEOHead
-        title="Request a DevSecure Innovation Plan"
-        description="Ready to innovate? Request a custom technology plan from DevSecure. Our development experts will create a tailored solution that meets your unique business requirements and technological challenges."
-        keywords="DevSecure plan request, DevSecure innovation solutions, custom technology plan, secure development services, request development quote, DevSecure technology consultation, custom digital solutions"
+        title="Request a Intelliphic Innovation Plan"
+        description="Ready to innovate? Request a custom technology plan from Intelliphic. Our development experts will create a tailored solution that meets your unique business requirements and technological challenges."
+        keywords="Intelliphic plan request, Intelliphic innovation solutions, custom technology plan, secure development services, request development quote, Intelliphic technology consultation, custom digital solutions"
         currentPage="/request-plan"
         structuredData={structuredData}
         ogType="website"

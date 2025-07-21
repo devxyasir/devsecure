@@ -10,11 +10,11 @@ const Home = () => {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "DevSecure Technology Solutions",
-    "url": "https://devsecure.com",
+    "name": "Intelliphic Technology Solutions",
+    "url": "https://Intelliphic.com",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://devsecure.com/search?q={search_term_string}",
+      "target": "https://Intelliphic.com/search?q={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   };
@@ -22,9 +22,9 @@ const Home = () => {
   return (
     <>
       <SEOHead
-        title="DevSecure - Empowering Innovation Through Technology Solutions"
-        description="DevSecure offers cutting-edge technology solutions including AI integration, cybersecurity, machine learning, and quantum-inspired development services. Transform your business with our secure, innovative digital solutions."
-        keywords="DevSecure innovation, DevSecure development, advanced technology solutions, quantum-inspired development, AI integration, secure digital transformation, custom software development, technology innovation partners"
+        title="Intelliphic - Empowering Innovation Through Technology Solutions"
+        description="Intelliphic offers cutting-edge technology solutions including AI integration, cybersecurity, machine learning, and quantum-inspired development services. Transform your business with our secure, innovative digital solutions."
+        keywords="Intelliphic innovation, Intelliphic development, advanced technology solutions, quantum-inspired development, AI integration, secure digital transformation, custom software development, technology innovation partners"
         currentPage="/"
         structuredData={structuredData}
       />
@@ -33,6 +33,7 @@ const Home = () => {
       <Services />
       <Companies />
       <AboutUs />
+      
     </>
   );
 };

@@ -36,7 +36,7 @@ const TermsOfService = () => {
           <section>
             <h2 className="text-2xl font-semibold text-white mb-4">3. Disclaimer</h2>
             <p>
-              The materials on DevSecure's website are provided on an 'as is' basis. DevSecure makes no
+              The materials on Intelliphic's website are provided on an 'as is' basis. Intelliphic makes no
               warranties, expressed or implied, and hereby disclaims and negates all other warranties
               including, without limitation, implied warranties or conditions of merchantability, fitness
               for a particular purpose, or non-infringement of intellectual property or other violation
@@ -47,9 +47,9 @@ const TermsOfService = () => {
           <section>
             <h2 className="text-2xl font-semibold text-white mb-4">4. Limitations</h2>
             <p>
-              In no event shall DevSecure or its suppliers be liable for any damages (including,
+              In no event shall Intelliphic or its suppliers be liable for any damages (including,
               without limitation, damages for loss of data or profit, or due to business interruption)
-              arising out of the use or inability to use the materials on DevSecure's website.
+              arising out of the use or inability to use the materials on Intelliphic's website.
             </p>
           </section>
 

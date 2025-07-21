@@ -199,12 +199,12 @@ const Services: React.FC = () => {
       "position": index + 1,
       "item": {
         "@type": "Service",
-        "name": `DevSecure ${service.title}`,
+        "name": `Intelliphic ${service.title}`,
         "description": service.description,
         "provider": {
           "@type": "Organization",
-          "name": "DevSecure",
-          "url": "https://devsecure.com/"
+          "name": "Intelliphic",
+          "url": "https://Intelliphic.com/"
         }
       }
     }))
@@ -243,9 +243,9 @@ const Services: React.FC = () => {
   return (
     <section id="services" ref={containerRef} className="py-20 relative overflow-hidden hardware-accelerated">
       <SEOHead
-        title="DevSecure Innovative Technology Services"  
-        description="Explore DevSecure's comprehensive technology service offerings including web development, mobile apps, cybersecurity, AI integration, cloud solutions, and digital marketing. Our quantum-inspired approach ensures cutting-edge innovation for your business."
-        keywords="DevSecure services, DevSecure technology, DevSecure web development, DevSecure mobile apps, DevSecure cybersecurity, DevSecure AI solutions, DevSecure innovation, quantum-inspired development, secure technology solutions, advanced digital services"
+        title="Intelliphic Innovative Technology Services"  
+        description="Explore Intelliphic's comprehensive technology service offerings including web development, mobile apps, cybersecurity, AI integration, cloud solutions, and digital marketing. Our quantum-inspired approach ensures cutting-edge innovation for your business."
+        keywords="Intelliphic services, Intelliphic technology, Intelliphic web development, Intelliphic mobile apps, Intelliphic cybersecurity, Intelliphic AI solutions, Intelliphic innovation, quantum-inspired development, secure technology solutions, advanced digital services"
         currentPage="/services"
         structuredData={structuredData}
       />

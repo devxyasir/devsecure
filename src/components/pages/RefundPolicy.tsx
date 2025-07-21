@@ -12,14 +12,14 @@ const RefundPolicy = () => {
             Refund Policy
           </h1>
           <p className="mt-4 text-xl text-gray-400">
-            Terms and conditions for refunds on DevSecure products and services
+            Terms and conditions for refunds on Intelliphic products and services
           </p>
         </div>
 
         <div className="prose prose-lg prose-invert max-w-none">
           <h2 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">1. Software and Digital Products</h2>
           <p>
-            DevSecure offers a 30-day money-back guarantee on most software products and digital services. If you're not satisfied with your purchase, you can request a full refund within 30 days of the purchase date.
+            Intelliphic offers a 30-day money-back guarantee on most software products and digital services. If you're not satisfied with your purchase, you can request a full refund within 30 days of the purchase date.
           </p>
           <p>
             Exceptions to this policy include:
@@ -42,12 +42,12 @@ const RefundPolicy = () => {
 
           <h2 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">4. Consulting and Implementation Services</h2>
           <p>
-            Consulting, installation, and implementation services are eligible for a refund only if DevSecure fails to deliver the agreed-upon services. Cancellations made before service delivery may be subject to a cancellation fee depending on the resources already allocated.
+            Consulting, installation, and implementation services are eligible for a refund only if Intelliphic fails to deliver the agreed-upon services. Cancellations made before service delivery may be subject to a cancellation fee depending on the resources already allocated.
           </p>
 
           <h2 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">5. How to Request a Refund</h2>
           <p>
-            To request a refund, please contact our customer service department at refunds@devsecure.com or call +1 (800) 555-0123. Please include your order number, the reason for your refund request, and any relevant details.
+            To request a refund, please contact our customer service department at refunds@Intelliphic.com or call +1 (800) 555-0123. Please include your order number, the reason for your refund request, and any relevant details.
           </p>
           <p>
             Refunds are typically processed within 5-7 business days and will be issued to the original payment method used for the purchase.

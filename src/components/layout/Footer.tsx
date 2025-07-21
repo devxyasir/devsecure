@@ -31,7 +31,7 @@ const Footer = () => {
                 <Shield className="relative h-6 w-6 text-cyan-400" />
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text group-hover:from-cyan-300 group-hover:to-blue-400 transition-all duration-300">
-                DevSecure
+                Intelliphic
               </span>
             </Link>
             <p className="text-gray-400 leading-relaxed">
@@ -182,7 +182,7 @@ const Footer = () => {
         <div className="border-t border-gray-800/30 py-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-500 text-sm">
-              © {new Date().getFullYear()} DevSecure. All rights reserved.
+              © {new Date().getFullYear()} Intelliphic. All rights reserved.
             </p>
             <div className="flex space-x-4 mt-6 md:mt-0">
               <a
@@ -210,7 +210,7 @@ const Footer = () => {
                 </div>
               </a>
               <a
-                href="https://github.com/devsecure"
+                href="https://github.com/Intelliphic"
                 className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 transform hover:scale-110 group"
                 target="_blank"
                 rel="noopener noreferrer"

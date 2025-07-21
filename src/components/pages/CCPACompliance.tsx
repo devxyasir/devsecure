@@ -12,19 +12,19 @@ const CCPACompliance = () => {
             CCPA Compliance
           </h1>
           <p className="mt-4 text-xl text-gray-400">
-            How DevSecure complies with the California Consumer Privacy Act
+            How Intelliphic complies with the California Consumer Privacy Act
           </p>
         </div>
 
         <div className="prose prose-lg prose-invert max-w-none">
           <h2 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">1. Introduction to CCPA</h2>
           <p>
-            The California Consumer Privacy Act (CCPA) is a state statute intended to enhance privacy rights and consumer protection for residents of California. DevSecure is committed to complying with the CCPA and protecting the privacy rights of California residents.
+            The California Consumer Privacy Act (CCPA) is a state statute intended to enhance privacy rights and consumer protection for residents of California. Intelliphic is committed to complying with the CCPA and protecting the privacy rights of California residents.
           </p>
 
           <h2 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">2. Information We Collect</h2>
           <p>
-            Under the CCPA, California residents have the right to know what personal information is collected about them. DevSecure may collect the following categories of personal information:
+            Under the CCPA, California residents have the right to know what personal information is collected about them. Intelliphic may collect the following categories of personal information:
           </p>
           <ul className="list-disc pl-6 mt-2 mb-4">
             <li>Identifiers (name, email address, IP address)</li>
@@ -49,7 +49,7 @@ const CCPACompliance = () => {
           
           <h3 className="text-xl font-semibold text-cyan-300 mt-6 mb-2">3.3 Right to Opt-Out of Sale</h3>
           <p>
-            You have the right to opt-out of the sale of your personal information. DevSecure does not sell personal information in the traditional sense. However, under the CCPA's broad definition, some data sharing might be considered a "sale." We provide a "Do Not Sell My Personal Information" option to ensure compliance.
+            You have the right to opt-out of the sale of your personal information. Intelliphic does not sell personal information in the traditional sense. However, under the CCPA's broad definition, some data sharing might be considered a "sale." We provide a "Do Not Sell My Personal Information" option to ensure compliance.
           </p>
           
           <h3 className="text-xl font-semibold text-cyan-300 mt-6 mb-2">3.4 Right to Non-Discrimination</h3>
@@ -69,8 +69,8 @@ const CCPACompliance = () => {
           </p>
           <ul className="list-disc pl-6 mt-2 mb-4">
             <li>Calling us at +1 (800) 555-0123</li>
-            <li>Visiting our website's Privacy Center at www.devsecure.com/privacy-center</li>
-            <li>Emailing us at ccpa@devsecure.com</li>
+            <li>Visiting our website's Privacy Center at www.Intelliphic.com/privacy-center</li>
+            <li>Emailing us at ccpa@Intelliphic.com</li>
           </ul>
           <p>
             Only you, or a person registered with the California Secretary of State authorized to act on your behalf, may make a verifiable consumer request related to your personal information.
@@ -88,13 +88,13 @@ const CCPACompliance = () => {
 
           <h2 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">7. Contact Information</h2>
           <p>
-            If you have any questions or comments about this notice, the ways in which DevSecure collects and uses your information, your choices and rights regarding such use, or wish to exercise your rights under California law, please do not hesitate to contact us at:
+            If you have any questions or comments about this notice, the ways in which Intelliphic collects and uses your information, your choices and rights regarding such use, or wish to exercise your rights under California law, please do not hesitate to contact us at:
           </p>
           <p className="mt-4">
-            <strong>Email:</strong> ccpa@devsecure.com<br />
+            <strong>Email:</strong> ccpa@Intelliphic.com<br />
             <strong>Phone:</strong> +1 (800) 555-0123<br />
-            <strong>Website:</strong> www.devsecure.com/privacy-center<br />
-            <strong>Postal Address:</strong> DevSecure Privacy Office, 123 Security Blvd, Suite 400, San Francisco, CA 94103
+            <strong>Website:</strong> www.Intelliphic.com/privacy-center<br />
+            <strong>Postal Address:</strong> Intelliphic Privacy Office, 123 Security Blvd, Suite 400, San Francisco, CA 94103
           </p>
 
           <div className="mt-12 pt-8 border-t border-gray-800">

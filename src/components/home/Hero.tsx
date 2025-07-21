@@ -287,7 +287,7 @@ const Hero = () => {
             
             {/* Holographic company name */}
             <h1 className="text-5xl md:text-6xl font-bold mt-6 text-hologram tracking-wide">
-              <span className="text-future">DevSecure</span>
+              <span className="text-future">Intelliphic</span>
             </h1>
           </div>
 

@@ -15,18 +15,18 @@ const SEOHead = ({
   title,
   description,
   keywords = '',
-  canonicalUrl = 'https://devsecure.com',
+  canonicalUrl = 'https://Intelliphic.com',
   ogImage = '/og-image.jpg',
   ogType = 'website',
   structuredData,
   currentPage,
 }: SEOHeadProps) => {
   // Add the company name in the title to improve keyword relevance
-  const fullTitle = `${title} | DevSecure Technology Solutions`;
+  const fullTitle = `${title} | Intelliphic Technology Solutions`;
   const fullCanonicalUrl = `${canonicalUrl}${currentPage}`;
   
   // Common keywords that should appear on all pages
-  const baseKeywords = 'DevSecure, DevSecure innovation, DevSecure development, technology solutions, secure development';
+  const baseKeywords = 'Intelliphic, Intelliphic innovation, Intelliphic development, technology solutions, secure development';
   const allKeywords = keywords ? `${baseKeywords}, ${keywords}` : baseKeywords;
 
   return (
