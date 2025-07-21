@@ -103,26 +103,6 @@ const services: ServiceType[] = [
     ]
   },
   {
-  icon: Brain,
-  title: 'AI Agents & Automation',
-  description: 'Autonomous systems designed to streamline operations, improve efficiency, and reduce manual workloads.',
-  color: 'blue',
-  subSkills: [
-    'Autonomous AI Agents',
-    'Workflow Automation',
-    'Prompt Engineering',
-    'NLP-based Task Handling',
-    'API Integration',
-    'Data Extraction & Processing',
-    'AI Chatbots',
-    'Email & CRM Automation',
-    'Custom Webhooks',
-    'Scripted Logic Flows',
-    'Scheduled Automation',
-    'Cross-Platform Orchestration'
-  ]
-},
-  {
     icon: Search,
     title: 'SEO & Digital Marketing',
     description: 'Quantum optimization strategies to enhance visibility and drive targeted traffic.',
