@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://Intelliphic.net/sitemap.xml
+Sitemap: https://Devsecure.net/sitemap.xml
 
 # Crawl-delay directive for specific bots
 User-agent: Googlebot

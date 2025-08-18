@@ -12,19 +12,19 @@ const ShippingPolicy = () => {
             Shipping Policy
           </h1>
           <p className="mt-4 text-xl text-gray-400">
-            Delivery information for Intelliphic products and services
+            Delivery information for Devsecure products and services
           </p>
         </div>
 
         <div className="prose prose-lg prose-invert max-w-none">
           <h2 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">1. Digital Delivery</h2>
           <p>
-            As Intelliphic primarily provides digital security solutions and services, most of our products are delivered electronically through secure download links or direct access to our cloud-based platforms. Digital deliveries are typically processed within 24 hours of purchase confirmation.
+            As Devsecure primarily provides digital security solutions and services, most of our products are delivered electronically through secure download links or direct access to our cloud-based platforms. Digital deliveries are typically processed within 24 hours of purchase confirmation.
           </p>
 
           <h2 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">2. Hardware Shipping</h2>
           <p>
-            For physical security hardware products (authentication keys, secure servers, etc.), Intelliphic ships globally using the following carriers:
+            For physical security hardware products (authentication keys, secure servers, etc.), Devsecure ships globally using the following carriers:
           </p>
           <ul className="list-disc pl-6 mt-2 mb-4">
             <li>Express Courier Services (2-3 business days) - $25</li>
@@ -37,12 +37,12 @@ const ShippingPolicy = () => {
 
           <h2 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">3. International Shipping</h2>
           <p>
-            International customers are responsible for any customs duties, taxes, and import fees imposed by their country. Intelliphic cannot guarantee delivery timelines for international shipments due to varying customs processing times.
+            International customers are responsible for any customs duties, taxes, and import fees imposed by their country. Devsecure cannot guarantee delivery timelines for international shipments due to varying customs processing times.
           </p>
 
           <h2 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">4. Order Tracking</h2>
           <p>
-            All physical shipments include tracking information sent via email once your order is dispatched. You can also track your order through your Intelliphic account dashboard.
+            All physical shipments include tracking information sent via email once your order is dispatched. You can also track your order through your Devsecure account dashboard.
           </p>
 
           <h2 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">5. Shipping Insurance</h2>
@@ -52,7 +52,7 @@ const ShippingPolicy = () => {
 
           <h2 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">6. Contact Us</h2>
           <p>
-            If you have any questions about your shipment or need to make special arrangements, please contact our shipping department at shipping@Intelliphic.com or call +1 (800) 555-0123.
+            If you have any questions about your shipment or need to make special arrangements, please contact our shipping department at shipping@Devsecure.com or call +1 (800) 555-0123.
           </p>
 
           <div className="mt-12 pt-8 border-t border-gray-800">

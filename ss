@@ -7,7 +7,7 @@ Your task is to build a fully functional, visually stunning, and user-friendly p
 ### Key Requirements:
 
 1. **Design & Visuals**  
-   - Use the color scheme, fonts, and branding style consistent with the company site https://intelliphic.netlify.app.  
+   - Use the color scheme, fonts, and branding style consistent with the company site https://Devsecure.netlify.app.  
    - The design must feel futuristic, sleek, and professional with smooth animations and floating 3D objects using WebGL or Three.js (react-three-fiber preferred).  
    - Implement floating, rotating 3D shapes or objects on key pages like Home and About to emphasize innovation and tech presence.  
    - Include subtle micro-interactions and smooth page transitions throughout the site.  
@@ -37,7 +37,7 @@ Your task is to build a fully functional, visually stunning, and user-friendly p
      - Showcase portfolio projects with images/screenshots, brief descriptions, technologies used, and links to demos or GitHub repos.
 
    - **Pricing Plans Page:**  
-     - Extract pricing plan data from https://intelliphic.netlify.app/plans.  
+     - Extract pricing plan data from https://Devsecure.netlify.app/plans.  
      - Display the plans with your own creative layout and styling consistent with the overall site design.  
      - Include pricing details, features, and call-to-action buttons (e.g., “Get Plan” or “Contact Us”).
 
@@ -75,8 +75,8 @@ Your task is to build a fully functional, visually stunning, and user-friendly p
 ### Input Data:
 
 - The full CV (to be used for the Resume PDF and service extraction).  
-- The URL or raw content of the services page (https://intelliphic.netlify.app/services) for dynamic service listing.  
-- The URL or raw content of the pricing plans page (https://intelliphic.netlify.app/plans) for dynamic plan rendering.
+- The URL or raw content of the services page (https://Devsecure.netlify.app/services) for dynamic service listing.  
+- The URL or raw content of the pricing plans page (https://Devsecure.netlify.app/plans) for dynamic plan rendering.
 
 ---
 

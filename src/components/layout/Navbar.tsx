@@ -113,7 +113,7 @@ const Navbar = () => {
             <Link 
               to="/" 
               className="flex items-center space-x-2 group relative"
-              aria-label="Intelliphic Home"
+              aria-label="Devsecure Home"
             >
               {/* Quantum logo container */}
               <div className="relative">
@@ -124,8 +124,8 @@ const Navbar = () => {
                 </div>
               </div>
               <div className="relative overflow-hidden">
-                <span className="text-2xl font-bold text-quantum relative" data-text="Intelliphic">
-                  <span className="text-future">Intelliphic</span>
+                <span className="text-2xl font-bold text-quantum relative" data-text="Devsecure">
+                  <span className="text-future">Devsecure</span>
                 </span>
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-500/0 via-cyan-500 to-blue-500/0 group-hover:w-full transition-all duration-1000 ease-expo-out"></span>
               </div>

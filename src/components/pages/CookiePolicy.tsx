@@ -24,7 +24,7 @@ const CookiePolicy = () => {
 
           <h2 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">2. How We Use Cookies</h2>
           <p>
-            Intelliphic uses cookies for several purposes, including:
+            Devsecure uses cookies for several purposes, including:
           </p>
           <ul className="list-disc pl-6 mt-2 mb-4">
             <li><strong>Essential cookies:</strong> Required for the website to function properly</li>
@@ -89,7 +89,7 @@ const CookiePolicy = () => {
 
           <h2 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">7. Contact Us</h2>
           <p>
-            If you have any questions about our use of cookies, please contact us at privacy@Intelliphic.com.
+            If you have any questions about our use of cookies, please contact us at privacy@Devsecure.com.
           </p>
 
           <div className="mt-12 pt-8 border-t border-gray-800">

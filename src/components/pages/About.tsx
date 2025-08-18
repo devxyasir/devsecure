@@ -46,7 +46,7 @@ const About = () => {
               <div className="h-1 w-24 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full mx-auto"></div>
             </div>
             <h1 className="section-title text-5xl md:text-7xl mb-8 animate-gradient-x">
-              About Intelliphic
+              About Devsecure
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
               We are a team of passionate technologists dedicated to securing and advancing
@@ -114,7 +114,7 @@ const About = () => {
               <div className="h-1 w-20 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full mx-auto"></div>
             </div>
             <h2 className="text-4xl font-bold mb-4 animate-gradient-x">Our Leadership Team</h2>
-            <p className="text-gray-300 text-lg">Meet the experts behind Intelliphic</p>
+            <p className="text-gray-300 text-lg">Meet the experts behind Devsecure</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">

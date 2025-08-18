@@ -12,7 +12,7 @@ const GDPRCompliance = () => {
             GDPR Compliance
           </h1>
           <p className="mt-4 text-xl text-gray-400">
-            How Intelliphic complies with the European Union's General Data Protection Regulation
+            How Devsecure complies with the European Union's General Data Protection Regulation
           </p>
         </div>
 
@@ -24,19 +24,19 @@ const GDPRCompliance = () => {
 
           <h2 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">2. Our Commitment</h2>
           <p>
-            Intelliphic is committed to ensuring the security and protection of the personal information that we process, and to provide a compliant and consistent approach to data protection. We have always had a robust and effective data protection program in place which complies with existing law and abides by the data protection principles.
+            Devsecure is committed to ensuring the security and protection of the personal information that we process, and to provide a compliant and consistent approach to data protection. We have always had a robust and effective data protection program in place which complies with existing law and abides by the data protection principles.
           </p>
 
           <h2 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">3. How We Comply with GDPR</h2>
           
           <h3 className="text-xl font-semibold text-cyan-300 mt-6 mb-2">3.1 Data Protection Officer</h3>
           <p>
-            We have appointed a Data Protection Officer (DPO) who is responsible for overseeing our data protection strategy and implementation to ensure compliance with GDPR requirements. You can contact our DPO at dpo@Intelliphic.com.
+            We have appointed a Data Protection Officer (DPO) who is responsible for overseeing our data protection strategy and implementation to ensure compliance with GDPR requirements. You can contact our DPO at dpo@Devsecure.com.
           </p>
           
           <h3 className="text-xl font-semibold text-cyan-300 mt-6 mb-2">3.2 Lawful Basis for Processing</h3>
           <p>
-            Intelliphic processes personal data only on a lawful basis. This includes consent, contract, legal obligation, vital interests, public task, or legitimate interests.
+            Devsecure processes personal data only on a lawful basis. This includes consent, contract, legal obligation, vital interests, public task, or legitimate interests.
           </p>
           
           <h3 className="text-xl font-semibold text-cyan-300 mt-6 mb-2">3.3 Data Protection Impact Assessments</h3>
@@ -72,7 +72,7 @@ const GDPRCompliance = () => {
 
           <h2 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">5. International Data Transfers</h2>
           <p>
-            Intelliphic ensures that any personal data transferred outside the EU/EEA is protected by appropriate safeguards, including:
+            Devsecure ensures that any personal data transferred outside the EU/EEA is protected by appropriate safeguards, including:
           </p>
           <ul className="list-disc pl-6 mt-2 mb-4">
             <li>Standard contractual clauses approved by the European Commission</li>
@@ -82,17 +82,17 @@ const GDPRCompliance = () => {
 
           <h2 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">6. Data Breach Notification</h2>
           <p>
-            In the event of a data breach, Intelliphic will notify the relevant supervisory authority without undue delay and, where feasible, within 72 hours after becoming aware of the breach. We will also notify affected data subjects when the breach is likely to result in a high risk to their rights and freedoms.
+            In the event of a data breach, Devsecure will notify the relevant supervisory authority without undue delay and, where feasible, within 72 hours after becoming aware of the breach. We will also notify affected data subjects when the breach is likely to result in a high risk to their rights and freedoms.
           </p>
 
           <h2 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">7. Data Protection Training</h2>
           <p>
-            All Intelliphic employees receive regular training on data protection principles and GDPR compliance to ensure awareness and understanding of their responsibilities.
+            All Devsecure employees receive regular training on data protection principles and GDPR compliance to ensure awareness and understanding of their responsibilities.
           </p>
 
           <h2 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">8. Contact Us</h2>
           <p>
-            If you have any questions about our GDPR compliance or wish to exercise your rights as a data subject, please contact us at gdpr@Intelliphic.com or write to us at our EU representative address.
+            If you have any questions about our GDPR compliance or wish to exercise your rights as a data subject, please contact us at gdpr@Devsecure.com or write to us at our EU representative address.
           </p>
 
           <div className="mt-12 pt-8 border-t border-gray-800">

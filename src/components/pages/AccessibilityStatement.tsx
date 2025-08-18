@@ -12,14 +12,14 @@ const AccessibilityStatement = () => {
             Accessibility Statement
           </h1>
           <p className="mt-4 text-xl text-gray-400">
-            Intelliphic's commitment to web accessibility
+            Devsecure's commitment to web accessibility
           </p>
         </div>
 
         <div className="prose prose-lg prose-invert max-w-none">
           <h2 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">1. Our Commitment</h2>
           <p>
-            Intelliphic is committed to ensuring digital accessibility for people with disabilities. We are continually improving the user experience for everyone and applying the relevant accessibility standards.
+            Devsecure is committed to ensuring digital accessibility for people with disabilities. We are continually improving the user experience for everyone and applying the relevant accessibility standards.
           </p>
 
           <h2 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">2. Conformance Status</h2>
@@ -27,12 +27,12 @@ const AccessibilityStatement = () => {
             The Web Content Accessibility Guidelines (WCAG) define requirements for designers and developers to improve accessibility for people with disabilities. They define three levels of conformance: Level A, Level AA, and Level AAA.
           </p>
           <p>
-            Intelliphic's website is partially conformant with WCAG 2.1 level AA. Partially conformant means that some parts of the content do not fully conform to the accessibility standard.
+            Devsecure's website is partially conformant with WCAG 2.1 level AA. Partially conformant means that some parts of the content do not fully conform to the accessibility standard.
           </p>
 
           <h2 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">3. Accessibility Features</h2>
           <p>
-            Intelliphic's website includes the following accessibility features:
+            Devsecure's website includes the following accessibility features:
           </p>
           <ul className="list-disc pl-6 mt-2 mb-4">
             <li>Semantic HTML structure with proper heading hierarchy</li>
@@ -46,7 +46,7 @@ const AccessibilityStatement = () => {
 
           <h2 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">4. Limitations and Alternatives</h2>
           <p>
-            Despite our best efforts to ensure accessibility of Intelliphic's website, there may be some limitations. Below is a description of known limitations, and potential solutions:
+            Despite our best efforts to ensure accessibility of Devsecure's website, there may be some limitations. Below is a description of known limitations, and potential solutions:
           </p>
           <ul className="list-disc pl-6 mt-2 mb-4">
             <li><strong>PDFs:</strong> Not all PDF documents are fully accessible. We are working to remediate existing PDFs and ensure future PDFs are accessible. For inaccessible PDFs, please contact us, and we will provide an accessible version.</li>
@@ -56,12 +56,12 @@ const AccessibilityStatement = () => {
 
           <h2 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">5. Feedback and Contact Information</h2>
           <p>
-            We welcome your feedback on the accessibility of Intelliphic's website. Please let us know if you encounter accessibility barriers:
+            We welcome your feedback on the accessibility of Devsecure's website. Please let us know if you encounter accessibility barriers:
           </p>
           <ul className="list-disc pl-6 mt-2 mb-4">
-            <li><strong>Email:</strong> accessibility@Intelliphic.com</li>
+            <li><strong>Email:</strong> accessibility@Devsecure.com</li>
             <li><strong>Phone:</strong> +1 (800) 555-0123</li>
-            <li><strong>Postal address:</strong> Intelliphic Accessibility Team, 123 Security Blvd, Suite 400, San Francisco, CA 94103</li>
+            <li><strong>Postal address:</strong> Devsecure Accessibility Team, 123 Security Blvd, Suite 400, San Francisco, CA 94103</li>
           </ul>
           <p>
             We try to respond to feedback within 2 business days.
@@ -69,7 +69,7 @@ const AccessibilityStatement = () => {
 
           <h2 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">6. Compatibility with Browsers and Assistive Technology</h2>
           <p>
-            Intelliphic's website is designed to be compatible with the following assistive technologies:
+            Devsecure's website is designed to be compatible with the following assistive technologies:
           </p>
           <ul className="list-disc pl-6 mt-2 mb-4">
             <li>Screen readers (including NVDA, JAWS, VoiceOver, and TalkBack)</li>
@@ -83,7 +83,7 @@ const AccessibilityStatement = () => {
 
           <h2 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">7. Technical Specifications</h2>
           <p>
-            Accessibility of Intelliphic's website relies on the following technologies to work with the particular combination of web browser and any assistive technologies or plugins installed on your computer:
+            Accessibility of Devsecure's website relies on the following technologies to work with the particular combination of web browser and any assistive technologies or plugins installed on your computer:
           </p>
           <ul className="list-disc pl-6 mt-2 mb-4">
             <li>HTML</li>
@@ -97,7 +97,7 @@ const AccessibilityStatement = () => {
 
           <h2 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">8. Assessment Approach</h2>
           <p>
-            Intelliphic assessed the accessibility of this website by the following approaches:
+            Devsecure assessed the accessibility of this website by the following approaches:
           </p>
           <ul className="list-disc pl-6 mt-2 mb-4">
             <li>Self-evaluation</li>

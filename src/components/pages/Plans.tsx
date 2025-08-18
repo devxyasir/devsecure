@@ -538,7 +538,7 @@ const Plans = () => {
       "position": index + 1,
       "item": {
         "@type": "Product",
-        "name": `Intelliphic ${plan.title}`,
+        "name": `Devsecure ${plan.title}`,
         "description": `${plan.features.slice(0, 3).map(f => f.text).join(', ')}...`,
         "offers": {
           "@type": "Offer",
@@ -553,9 +553,9 @@ const Plans = () => {
   return (
     <div className="min-h-screen relative overflow-hidden">
       <SEOHead
-        title="Intelliphic Technology Plans & Pricing"
-        description="Explore Intelliphic's range of technology service plans including custom development, WordPress websites, mobile app development, SEO services, and maintenance packages. Find the perfect plan for your innovation needs."
-        keywords="Intelliphic plans, Intelliphic pricing, technology service packages, custom development plans, app development pricing, website development services, Intelliphic innovation packages, secure technology solutions pricing"
+        title="Devsecure Technology Plans & Pricing"
+        description="Explore Devsecure's range of technology service plans including custom development, WordPress websites, mobile app development, SEO services, and maintenance packages. Find the perfect plan for your innovation needs."
+        keywords="Devsecure plans, Devsecure pricing, technology service packages, custom development plans, app development pricing, website development services, Devsecure innovation packages, secure technology solutions pricing"
         currentPage="/plans"
         structuredData={structuredData}
         ogType="product"

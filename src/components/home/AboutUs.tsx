@@ -31,7 +31,7 @@ const AboutUs: React.FC = () => {
           </h2>
           <div className="h-1 w-24 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto mb-8"></div>
           <p className="text-gray-300 max-w-3xl mx-auto text-lg md:text-xl">
-            At Intelliphic, we transcend traditional development paradigms, crafting dimensional solutions that exist at the intersection of innovation and security.
+            At Devsecure, we transcend traditional development paradigms, crafting dimensional solutions that exist at the intersection of innovation and security.
           </p>
         </div>
         
@@ -40,7 +40,7 @@ const AboutUs: React.FC = () => {
           <div className="quantum-panel p-8 rounded-2xl backdrop-blur-sm bg-gradient-to-br from-gray-900/80 via-gray-800/80 to-blue-900/20 border border-gray-700/50">
             <h3 className="text-2xl font-bold mb-6 text-cyan-400">Our Quantum Approach</h3>
             <p className="text-gray-300 mb-4">
-              Founded in 2023, Intelliphic emerged from a vision to redefine technological boundaries. We operate at the bleeding edge of digital innovation, where security and functionality exist in perfect quantum harmony.
+              Founded in 2023, Devsecure emerged from a vision to redefine technological boundaries. We operate at the bleeding edge of digital innovation, where security and functionality exist in perfect quantum harmony.
             </p>
             <p className="text-gray-300 mb-6">
               Our multidimensional team brings together expertise across the full technological spectrum, enabling us to tackle the most complex challenges with elegant, future-proof solutions.
