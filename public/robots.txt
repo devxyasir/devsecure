@@ -1,18 +1,14 @@
 User-agent: *
 Allow: /
 
-# Sitemap location
-Sitemap: https://Devsecure.net/sitemap.xml
+Sitemap: https://intelliphic.netlify.app/sitemap.xml
 
-# Crawl-delay directive for specific bots
-User-agent: Googlebot
-Crawl-delay: 1
-
-User-agent: Bingbot
-Crawl-delay: 1
-
-# Optimize crawl budget by disallowing query parameters
-Disallow: /*?
-
-# Ensure only canonical pages are indexed
+# Prevent dynamic query-string versions from being indexed
 Disallow: /request-plan?plan=*
+
+# Optional: Block known unnecessary tracking URLs (optional)
+Disallow: /*?utm_
+Disallow: /*&utm_
+
+# Don't block all query parameters unless absolutely needed!
+# Disallow: /*?         ← ⚠️ Dangerous: use with caution
