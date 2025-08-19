@@ -138,36 +138,9 @@ const developers: Developer[] = [
       'Job Finder Portal'
     ]
   },
- {
-    id: 5,
-    name: 'Muhammad Mujahid',
-    position: 'Lead Developer & Market Researcher',
-    image: 'https://i.ibb.co/zT0w2gTZ/muji.webp',
-    bio: 'Strategic market researcher and lead developer with expertise in identifying technological trends and translating market insights into innovative product solutions. Specializes in competitive analysis and user-centered development.',
-    skills: [
-      { name: 'Market Research', level: 95, color: 'blue' },
-      { name: 'Full Stack Development', level: 90, color: 'cyan' },
-      { name: 'Competitive Analysis', level: 88, color: 'violet' },
-      { name: 'UX Research', level: 85, color: 'green' },
-      { name: 'Product Strategy', level: 92, color: 'orange' }
-    ],
-    social: {
-      github: 'https://github.com/iacmujahid',
-      linkedin: 'https://linkedin.com/in/iacmujahid',
-      email: 'mujimalik0324@gmail.com'
-    },
-    projects: [
-      'Technology Market Analysis Platform', 
-      'Competitor Intelligence System', 
-      'E-commerce Market Positioning Tool',
-      'User Research Dashboard',
-      'Product Strategy Framework',
-      'Growth Analytics Portal'
-    ]
-  },
-   
+ 
   {
-    id: 6,
+    id: 5,
     name: 'Muhammad Faraz',
     position: 'SEO Specialist & Digital Marketer',
     image: 'https://i.ibb.co/0RtPgZ5F/faraz.webp',
@@ -193,28 +166,7 @@ const developers: Developer[] = [
       'B2B SEO Campaign Management'
     ]
   },
-   {
-    id: 6,
-    name: 'Muhammad Akbar',
-    position: 'Social Media & Marketing Team',
-    image: 'https://i.ibb.co/8g9cvQtK/M-Akbar-1.webp',
-    bio: 'Expert in social media handling, marketing, and AI automation. Drives growth and engagement through innovative digital strategies and automation tools.',
-    skills: [
-      { name: 'Social Media Handling', level: 92, color: 'blue' },
-      { name: 'Marketing', level: 89, color: 'green' },
-      { name: 'AI Automation', level: 85, color: 'purple' }
-    ],
-    social: {
-      github: 'https://github.com/makbar-56',
-      linkedin: '',
-      email: 'muhammadakbarfida56@gmail.com'
-    },
-    projects: [
-      'AI-Driven Campaigns',
-      'Brand Engagement Automation',
-      'Social Analytics Platform'
-    ]
-  },
+  
 ];
 
 const DeveloperModal: React.FC<{
