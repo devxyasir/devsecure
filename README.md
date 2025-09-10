@@ -1,4 +1,4 @@
-# Devsecure Website - Public Frontend Only
+# Devsecure Website - Public Frontend Only 
 
 ## Overview
 This website has been simplified to be a public-facing frontend only. All backend and admin functionality has been completely removed, resulting in a lightweight, static website that's easy to deploy.
@@ -42,3 +42,9 @@ After building, the contents of the `dist` directory can be deployed to any stat
 - GitHub Pages
 - AWS S3
 - Firebase Hosting
+
+
+**devxyasir**
+
+
+dev
