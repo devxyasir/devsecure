@@ -118,12 +118,12 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3">
               <li className="group">
-                <a href="mailto:devxsecure@gmail.com" className="flex items-center space-x-3 text-gray-400 hover:text-cyan-400 transition-colors duration-300">
+                <a href="mailto:team.devsecure@gmail.com" className="flex items-center space-x-3 text-gray-400 hover:text-cyan-400 transition-colors duration-300">
                   <div className="relative w-8 h-8 flex items-center justify-center">
                     <div className="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/10 rounded-full transition-colors duration-300"></div>
                     <Mail className="h-4 w-4" />
                   </div>
-                  <span>devxsecure@gmail.com</span>
+                  <span>team.devsecure@gmail.com</span>
                 </a>
               </li>
               <li className="group">

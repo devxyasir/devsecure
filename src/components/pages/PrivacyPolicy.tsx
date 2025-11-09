@@ -61,8 +61,8 @@ const PrivacyPolicy = () => {
             <h2 className="text-2xl font-semibold text-white mb-4">5. Contact Us</h2>
             <p>
               If you have any questions about this Privacy Policy, please contact us at:
-              <a href="mailto:devxsecure@gmail.com" className="text-cyan-400 ml-2">
-                devxsecure@gmail.com
+              <a href="mailto:team.devsecure@gmail.com" className="text-cyan-400 ml-2">
+                team.devsecure@gmail.com
               </a>
             </p>
           </section>

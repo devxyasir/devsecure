@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle, Atom, Shield, Sparkles, Zap, Hexagon, Globe } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, Hexagon, Globe } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
 const Contact = () => {
@@ -64,15 +64,16 @@ const Contact = () => {
 
     try {
       await emailjs.sendForm(
-        'service_bxjr01s',
-        'template_6i2m3gm',
+        'service_g7h955w',
+        'template_y1dyjqi',
         formRef.current,
-        'D4XYWEA45ZRNzadl8'
+        'nGZvAqXXWBFYeGTjw'
       );
       setIsSuccess(true);
       formRef.current.reset();
     } catch (err) {
       setError('Failed to send message. Please try again later.');
+      console.error('Error sending email:', err);
     } finally {
       setIsSubmitting(false);
     }
@@ -252,7 +253,7 @@ const Contact = () => {
                   <Mail className="h-6 w-6 text-cyan-400" />
                   <div>
                     <p className="text-gray-400">Email</p>
-                    <p className="text-white">devxsecure@gmail.com</p>
+                    <p className="text-white">team.devsecure@gmail.com</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">

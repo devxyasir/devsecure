@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>New Contact Form Submission - Devsecure</title>
+    <style type="text/css">
+        /* Mobile Responsive Styles */
+        @media only screen and (max-width: 600px) {
+            /* Main container padding */
+            .email-wrapper {
+                padding: 10px !important;
+            }
+            
+            /* Email container width */
+            .email-container {
+                width: 100% !important;
+                max-width: 100% !important;
+                border-radius: 0 !important;
+            }
+            
+            /* Header padding */
+            .header-section {
+                padding: 25px 20px !important;
+            }
+            
+            /* Logo size */
+            .logo-container {
+                width: 50px !important;
+                height: 50px !important;
+                margin-bottom: 12px !important;
+            }
+            
+            .logo-icon {
+                font-size: 24px !important;
+            }
+            
+            /* Title font size */
+            .main-title {
+                font-size: 22px !important;
+            }
+            
+            .subtitle {
+                font-size: 12px !important;
+            }
+            
+            /* Content padding */
+            .content-section {
+                padding: 25px 20px !important;
+            }
+            
+            /* Notification badge */
+            .notification-badge {
+                padding: 12px 15px !important;
+                margin-bottom: 20px !important;
+            }
+            
+            .notification-text {
+                font-size: 12px !important;
+            }
+            
+            /* Field containers */
+            .field-container {
+                padding-bottom: 18px !important;
+            }
+            
+            .field-inner {
+                padding: 15px !important;
+            }
+            
+            /* Label font size */
+            .field-label {
+                font-size: 11px !important;
+            }
+            
+            /* Value font size */
+            .field-value {
+                font-size: 14px !important;
+            }
+            
+            .message-value {
+                font-size: 14px !important;
+                line-height: 1.6 !important;
+            }
+            
+            /* Divider padding */
+            .divider-section {
+                padding: 15px 0 !important;
+            }
+            
+            /* Button container */
+            .button-container {
+                padding-top: 15px !important;
+            }
+            
+            /* Reply button */
+            .reply-button {
+                width: 100% !important;
+                display: block !important;
+                padding: 12px 20px !important;
+                font-size: 14px !important;
+                text-align: center !important;
+            }
+            
+            /* Footer padding */
+            .footer-section {
+                padding: 20px 15px !important;
+            }
+            
+            .footer-text {
+                font-size: 12px !important;
+            }
+            
+            .footer-small {
+                font-size: 10px !important;
+            }
+            
+            /* Footer links - stack vertically on mobile */
+            .footer-links {
+                display: block !important;
+            }
+            
+            .footer-links a {
+                display: block !important;
+                margin: 5px 0 !important;
+            }
+        }
+        
+        /* Additional mobile optimizations */
+        @media only screen and (max-width: 480px) {
+            .email-wrapper {
+                padding: 5px !important;
+            }
+            
+            .header-section {
+                padding: 20px 15px !important;
+            }
+            
+            .content-section {
+                padding: 20px 15px !important;
+            }
+            
+            .main-title {
+                font-size: 20px !important;
+            }
+            
+            .field-inner {
+                padding: 12px !important;
+            }
+        }
+        
+        /* Prevent auto-linking on iOS */
+        .apple-link-black {
+            color: #000000 !important;
+            text-decoration: none !important;
+        }
+        
+        /* Better touch targets for mobile */
+        @media only screen and (max-width: 600px) {
+            a {
+                min-height: 44px !important;
+                display: inline-block !important;
+            }
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #0a0a0a;">
+    
+    <!-- Main Container -->
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #0a0a0a; padding: 40px 20px;" class="email-wrapper">
+        <tr>
+            <td align="center">
+                <!-- Email Content Container -->
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="max-width: 600px; width: 100%; background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%); border: 1px solid #1e293b; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 40px rgba(0, 179, 255, 0.1);" class="email-container">
+                    
+                    <!-- Header Section with Gradient -->
+                    <tr>
+                        <td style="background: linear-gradient(135deg, #00b3ff 0%, #0066ff 100%); padding: 30px; text-align: center;" class="header-section">
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                <tr>
+                                    <td align="center">
+                                        <!-- Logo/Icon Area -->
+                                        <div style="width: 60px; height: 60px; background-color: rgba(255, 255, 255, 0.2); border-radius: 12px; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(10px);" class="logo-container">
+                                            <span style="font-size: 32px; color: #ffffff;" class="logo-icon">🛡️</span>
+                                        </div>
+                                        <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 700; letter-spacing: 1px; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);" class="main-title">
+                                            Devsecure
+                                        </h1>
+                                        <p style="margin: 8px 0 0; color: rgba(255, 255, 255, 0.9); font-size: 14px; font-weight: 300;" class="subtitle">
+                                            New Contact Form Submission
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <!-- Content Section -->
+                    <tr>
+                        <td style="padding: 40px 30px;" class="content-section">
+                            
+                            <!-- Notification Badge -->
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                <tr>
+                                    <td style="background-color: rgba(0, 179, 255, 0.1); border-left: 4px solid #00b3ff; padding: 15px 20px; border-radius: 6px; margin-bottom: 30px;" class="notification-badge">
+                                        <p style="margin: 0; color: #00b3ff; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;" class="notification-text">
+                                            📧 New Message Received
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <!-- Form Data Section -->
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                
+                                <!-- Name Field -->
+                                <tr>
+                                    <td style="padding-bottom: 25px;" class="field-container">
+                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: rgba(30, 41, 59, 0.5); border-radius: 8px; border: 1px solid rgba(0, 179, 255, 0.2);">
+                                            <tr>
+                                                <td style="padding: 20px;" class="field-inner">
+                                                    <p style="margin: 0 0 8px; color: #94a3b8; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;" class="field-label">
+                                                        👤 Name
+                                                    </p>
+                                                    <p style="margin: 0; color: #ffffff; font-size: 16px; font-weight: 500; line-height: 1.5;" class="field-value">
+                                                        {{user_name}}
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                
+                                <!-- Email Field -->
+                                <tr>
+                                    <td style="padding-bottom: 25px;" class="field-container">
+                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: rgba(30, 41, 59, 0.5); border-radius: 8px; border: 1px solid rgba(0, 179, 255, 0.2);">
+                                            <tr>
+                                                <td style="padding: 20px;" class="field-inner">
+                                                    <p style="margin: 0 0 8px; color: #94a3b8; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;" class="field-label">
+                                                        ✉️ Email Address
+                                                    </p>
+                                                    <p style="margin: 0; color: #00b3ff; font-size: 16px; font-weight: 500; line-height: 1.5;" class="field-value">
+                                                        <a href="mailto:{{user_email}}" style="color: #00b3ff; text-decoration: none; word-break: break-all;">
+                                                            {{user_email}}
+                                                        </a>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                
+                                <!-- Subject Field -->
+                                <tr>
+                                    <td style="padding-bottom: 25px;" class="field-container">
+                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: rgba(30, 41, 59, 0.5); border-radius: 8px; border: 1px solid rgba(0, 179, 255, 0.2);">
+                                            <tr>
+                                                <td style="padding: 20px;" class="field-inner">
+                                                    <p style="margin: 0 0 8px; color: #94a3b8; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;" class="field-label">
+                                                        📌 Subject
+                                                    </p>
+                                                    <p style="margin: 0; color: #ffffff; font-size: 16px; font-weight: 500; line-height: 1.5;" class="field-value">
+                                                        {{subject}}
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                
+                                <!-- Message Field -->
+                                <tr>
+                                    <td style="padding-bottom: 30px;" class="field-container">
+                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: rgba(30, 41, 59, 0.5); border-radius: 8px; border: 1px solid rgba(0, 179, 255, 0.2);">
+                                            <tr>
+                                                <td style="padding: 20px;" class="field-inner">
+                                                    <p style="margin: 0 0 12px; color: #94a3b8; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;" class="field-label">
+                                                        💬 Message
+                                                    </p>
+                                                    <p style="margin: 0; color: #e2e8f0; font-size: 15px; line-height: 1.8; white-space: pre-wrap; word-wrap: break-word;" class="message-value">
+                                                        {{message}}
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                
+                            </table>
+                            
+                            <!-- Divider -->
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                <tr>
+                                    <td style="padding: 20px 0;" class="divider-section">
+                                        <div style="height: 1px; background: linear-gradient(to right, transparent, rgba(0, 179, 255, 0.3), transparent);"></div>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <!-- Action Buttons -->
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                <tr>
+                                    <td align="center" style="padding-top: 20px;" class="button-container">
+                                        <!-- Reply Button -->
+                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="max-width: 300px;">
+                                            <tr>
+                                                <td style="background: linear-gradient(135deg, #00b3ff 0%, #0066ff 100%); border-radius: 8px; padding: 0;" align="center">
+                                                    <a href="mailto:{{user_email}}?subject=Re: {{subject}}" style="display: inline-block; padding: 14px 32px; color: #ffffff; text-decoration: none; font-size: 15px; font-weight: 600; border-radius: 8px; text-align: center; width: 100%; box-sizing: border-box;" class="reply-button">
+                                                        📧 Reply to {{user_name}}
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                        </td>
+                    </tr>
+                    
+                    <!-- Footer Section -->
+                    <tr>
+                        <td style="background-color: rgba(15, 23, 42, 0.8); padding: 25px 30px; text-align: center; border-top: 1px solid rgba(0, 179, 255, 0.1);" class="footer-section">
+                            <p style="margin: 0 0 10px; color: #64748b; font-size: 13px; line-height: 1.6;" class="footer-text">
+                                This email was automatically generated from the Devsecure contact form.
+                            </p>
+                            <p style="margin: 0; color: #475569; font-size: 12px;" class="footer-text">
+                                <strong style="color: #00b3ff;">Devsecure Technology Solutions</strong><br>
+                                Multan, Punjab, Pakistan<br>
+                                <span class="footer-links" style="display: inline;">
+                                    <a href="mailto:team.devsecure@gmail.com" style="color: #00b3ff; text-decoration: none;">team.devsecure@gmail.com</a> | 
+                                    <a href="tel:+923238136352" style="color: #00b3ff; text-decoration: none;">+92 323 8136 352</a>
+                                </span>
+                            </p>
+                            <p style="margin: 15px 0 0; color: #475569; font-size: 11px;" class="footer-small">
+                                © 2024 Devsecure. All rights reserved.
+                            </p>
+                        </td>
+                    </tr>
+                    
+                </table>
+            </td>
+        </tr>
+    </table>
+    
+</body>
+</html>
+
